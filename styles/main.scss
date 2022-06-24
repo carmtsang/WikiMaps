@@ -3,6 +3,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  flex-direction: column;
 
   background: rgb(163, 208, 219);
   background: linear-gradient(
@@ -14,4 +15,9 @@ body {
     rgba(163, 208, 219, 1) 74%,
     rgba(163, 208, 219, 1) 100%
   );
+}
+
+#map {
+  height: 500px;
+  width: 900px;
 }

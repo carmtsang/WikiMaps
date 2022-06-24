@@ -2,19 +2,45 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Wiki Maps</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+  <meta charset="utf-8">
 
+  <!-- Load Leaflet  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+  crossorigin=""></script>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+
+  <!-- JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <!-- Nav bar partial goes here -->
+
+  <h1>Welcome to Wiki Maps</h1>
+
+  <p>Wiki Maps allows you to bookmark your favourite locations, create maps with different saved pins and view other user's saved maps </p>
+
+  <div id="map"></div>
+  <script type="text/javascript" src="/scripts/leaflet.js"></script>
+
+  <h2>Available maps</h2>
+
+
 </body>
 
 </html>
