@@ -35,18 +35,30 @@
   <main>
     <h2>My Maps</h2>
     <div class="user_map_list">
-      <a href="/maps/id">Vancouver Vegan Restaurants</a>
-      <div>
+      <a href="/maps/id">Calgary Vegan Restaurants</a>
+      <div class="edit-button">
         <form action="/maps/:id" method="post">
           <button type="submit">Edit</button>
         </form>
+      </div>
+      <div class="delete-button">
         <form action="/maps/:id/:delete" method="post">
           <button type="submit">Delete</button>
         </form>
       </div>
     </div>
     <div class="user_map_list">
-
+      <a href="/maps/id">Vancouver Hidden Gems</a>
+      <div class="edit-button">
+        <form action="/maps/:id" method="post">
+          <button type="submit">Edit</button>
+        </form>
+      </div>
+      <div class="delete-button">
+        <form action="/maps/:id/:delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
     </div>
     <div>
       <h2>Favourite Maps</h2>
