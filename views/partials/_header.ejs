@@ -1,0 +1,30 @@
+<header>
+  <div class="top-bar">
+  <nav class="navbar navbar-expand-md navbar-dark bg-success">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="/urls/login">Login</a>
+        <a class="nav-item nav-link" href="/urls">Maps</a>
+        <a class="nav-item nav-link" href="/urls">Favourite</a>
+    </div>
+  </div>
+  <!-- Add conditional here-->
+
+  <% if (user) { %>
+    <form action="/logout" method="POST">
+      <div>
+        <label for="username">
+          Logged in as <%= user.email %>
+        </label>
+        <button type="submit" class="btn btn-link">Logout</button>
+      </div>
+    </form>
+  <% } else { %>
+   <p><a href="http://localhost:8080/login">Sign in</a></p>
+ <% } %>
+  </nav>
+</div>
+</header>
