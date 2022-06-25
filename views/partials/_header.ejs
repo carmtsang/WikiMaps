@@ -6,25 +6,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link" href="/urls/login">Login</a>
+        <!-- Commented out below links -->
+        <!-- <a class="nav-item nav-link" href="/urls/login">Login</a>
         <a class="nav-item nav-link" href="/urls">Maps</a>
-        <a class="nav-item nav-link" href="/urls">Favourite</a>
+        <a class="nav-item nav-link" href="/urls">Favourite</a> -->
     </div>
   </div>
-  <!-- Add conditional here-->
+  <!-- Add conditional here example below-->
 
-  <% if (user) { %>
-    <form action="/logout" method="POST">
-      <div>
-        <label for="username">
-          Logged in as <%= user.email %>
-        </label>
-        <button type="submit" class="btn btn-link">Logout</button>
-      </div>
-    </form>
-  <% } else { %>
-   <p><a href="http://localhost:8080/login">Sign in</a></p>
- <% } %>
   </nav>
 </div>
 </header>
