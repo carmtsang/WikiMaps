@@ -4,7 +4,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get('/maps', (req, res) => {
-    res.render('maps')
+    res.render('maps_user')
 
   db.query(`SELECT * FROM maps;`)
     .then(data => {
