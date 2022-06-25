@@ -1,6 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
+// this will go on individual map page
+
+
 module.exports = (db) => {
   router.get('/locations', (req, res) => {
     db.query(`SELECT * FROM locations;`)
