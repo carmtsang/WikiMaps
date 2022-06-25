@@ -23,3 +23,6 @@ module.exports = (db) => {
   });
   return router;
 };
+
+
+// make a post for each
