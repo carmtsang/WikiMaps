@@ -5,11 +5,16 @@ body {
   min-height: 100vh;
   flex-direction: column;
 
-  background: rgb(163, 208, 219);
-
+  font-family: 'Roboto', sans-serif;
+  background: rgb(236, 247, 249);
+  padding: 0 15rem;
 }
 
 #map {
-  height: 500px;
-  width: 900px;
+  height: 400px;
+  width: 800px;
+}
+
+h1, p {
+  color: #003d5b;
 }
