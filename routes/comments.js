@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
-  router.get("/", (req, res) => {
+  router.get('/comments', (req, res) => {
     db.query(`SELECT * FROM comments;`)
       .then(data => {
         const comments = data.rows;
@@ -16,3 +16,6 @@ module.exports = (db) => {
   });
   return router;
 };
+
+
+// make a post for each
