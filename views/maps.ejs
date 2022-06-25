@@ -11,14 +11,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+    <!-- JS -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+
 
 </head>
 <body>
-  <div>
+  <header>
+    <h1>Username's Maps</h1>
+  </header>
+  <main>
     <h2>My Maps</h2>
-  </div>
-  <div>
-    <h2>Favourite Maps</h2>
-  </div>
+    <div class="user_map_list">
+      <a href="/maps/id">Vancouver Vegan Restaurants</a>
+      <div>
+        <form action="/maps/:id" method="post">
+          <button type="submit">Edit</button>
+        </form>
+        <form action="/maps/:id/:delete" method="post">
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    </div>
+    <div class="user_map_list">
+
+    </div>
+    <div>
+      <h2>Favourite Maps</h2>
+    </div>
+
+  </main>
 </body>
 </html>
