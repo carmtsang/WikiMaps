@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -16,11 +17,10 @@
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/main.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/user-home.css" type="text/css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- JS -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -34,13 +34,14 @@
     <h1>Username's Maps</h1>
   </header>
   <main>
-    <h2>My Maps</h2>
-    <div class="user_map_list">
-      <a href="/maps/id">Calgary Vegan Restaurants</a>
-      <div class="edit-button">
-        <form action="/maps/:id" method="post">
-          <button type="submit">Edit</button>
-        </form>
+    <section>
+      <h2>My Maps</h2>
+      <div class="user_map_list">
+        <a href="/maps/id">Calgary Vegan Restaurants</a>
+        <div class="edit-button">
+          <form action="/maps/:id" method="post">
+            <button type="submit">Edit</button>
+          </form>
       </div>
       <div class="delete-button">
         <form action="/maps/:id/:delete" method="post">
@@ -48,6 +49,7 @@
         </form>
       </div>
     </div>
+
     <div class="user_map_list">
       <a href="/maps/id">Vancouver Hidden Gems</a>
       <div class="edit-button">
@@ -61,9 +63,33 @@
         </form>
       </div>
     </div>
-    <div>
+    </section>
+
+    <section>
       <h2>Favourite Maps</h2>
-    </div>
+      <div class="liked-map">
+        <a href="#">Random liked map 1</a>
+        <span>description of map</span>
+        <span class="heart-icon">
+          <i class="fa-solid fa-heart"></i>
+        </span>
+      </div>
+      <div class="liked-map">
+        <a href="#">Random liked Map 2</a>
+        <span>description of map</span>
+        <span class="heart-icon">
+          <i class="fa-solid fa-heart"></i>
+        </span>
+      </div>
+      <div class="liked-map">
+        <a href="#">Random liked Map 3</a>
+        <span>description of map</span>
+        <span class="heart-icon">
+          <i class="fa-solid fa-heart"></i>
+        </span>
+      </div>
+    </section>
+
 
   </main>
 </body>
