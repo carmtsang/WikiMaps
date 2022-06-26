@@ -13,17 +13,13 @@ section {
   margin: 2rem;
 }
 
-.section_head {
+.section_head, .user_map_list {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
-.user_map_list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
+
 
 .button {
   background-color: #30638E;
