@@ -1,13 +1,19 @@
 body {
   display: flex;
-
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
-
   font-family: 'Roboto', sans-serif;
   background: rgb(236, 247, 249);
-  padding: 0 15rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 #map {
