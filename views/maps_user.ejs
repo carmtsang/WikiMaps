@@ -31,10 +31,10 @@
 <body>
   <%- include('partials/_header') %>
   <header>
-    <h1>Username's Maps</h1>
+    <h1>Username's Profile</h1>
   </header>
   <main>
-    <section>
+    <section class="map-list">
       <h2>My Maps</h2>
       <div class="user_map_list">
         <a href="/maps/id">Calgary Vegan Restaurants</a>
@@ -49,47 +49,55 @@
         </form>
       </div>
     </div>
+    </section>
+    <section class="map-list">
+      <h2>My Contributions</h2>
+      <div class="user_map_list">
+        <a href="/maps/id">Movie locations</a>
+        <div class="edit-button">
+          <form action="/maps/:id" method="post">
+            <button type="submit">Edit</button>
+          </form>
+      </div>
+    </div>
 
     <div class="user_map_list">
-      <a href="/maps/id">Vancouver Hidden Gems</a>
+      <a href="/maps/id">Instagram worthy restaurants</a>
       <div class="edit-button">
         <form action="/maps/:id" method="post">
           <button type="submit">Edit</button>
         </form>
       </div>
-      <div class="delete-button">
-        <form action="/maps/:id/:delete" method="post">
-          <button type="submit">Delete</button>
-        </form>
-      </div>
     </div>
     </section>
 
-    <section>
+    <section class="map-list">
       <h2>Favourite Maps</h2>
       <div class="liked-map">
         <a href="#">Random liked map 1</a>
-        <span>description of map</span>
+        <p>description of map</p>
         <span class="heart-icon">
           <i class="fa-solid fa-heart"></i>
         </span>
       </div>
       <div class="liked-map">
         <a href="#">Random liked Map 2</a>
-        <span>description of map</span>
+        <p>description of map</p>
         <span class="heart-icon">
           <i class="fa-solid fa-heart"></i>
         </span>
       </div>
       <div class="liked-map">
         <a href="#">Random liked Map 3</a>
-        <span>description of map</span>
+        <p>description of map</p>
         <span class="heart-icon">
           <i class="fa-solid fa-heart"></i>
         </span>
       </div>
     </section>
-
+    <section id="create-new-map">
+      <h2>Create a new map</h2>
+    </section>
 
   </main>
 </body>
