@@ -30,31 +30,43 @@
 </head>
 <body>
   <%- include('partials/_header') %>
-  <header>
-    <h1>Username's Profile</h1>
-  </header>
-  <main>
-    <section class="map-list">
+  <main class="container">
+    <header>
+      <h1>Username's Profile</h1>
+    </header>
+
+    <section id="my_maps">
       <h2>My Maps</h2>
       <div class="user_map_list">
         <a href="/maps/id">Calgary Vegan Restaurants</a>
-        <div class="edit-button">
+        <div class="button">
           <form action="/maps/:id" method="post">
             <button type="submit">Edit</button>
           </form>
+          <form action="/maps/:id/:delete" method="post">
+            <button type="submit">Delete</button>
+          </form>
       </div>
-      <div class="delete-button">
+    </div>
+    <div class="user_map_list">
+      <a href="/maps/id">Exotic house</a>
+      <div class="button">
+        <form action="/maps/:id" method="post">
+          <button type="submit">Edit</button>
+        </form>
+
         <form action="/maps/:id/:delete" method="post">
           <button type="submit">Delete</button>
         </form>
       </div>
     </div>
     </section>
-    <section class="map-list">
+    <section id="my_contributions">
       <h2>My Contributions</h2>
+
       <div class="user_map_list">
         <a href="/maps/id">Movie locations</a>
-        <div class="edit-button">
+        <div class="button">
           <form action="/maps/:id" method="post">
             <button type="submit">Edit</button>
           </form>
@@ -63,7 +75,7 @@
 
     <div class="user_map_list">
       <a href="/maps/id">Instagram worthy restaurants</a>
-      <div class="edit-button">
+      <div class="button">
         <form action="/maps/:id" method="post">
           <button type="submit">Edit</button>
         </form>
@@ -95,7 +107,7 @@
         </span>
       </div>
     </section>
-    <section id="create-new-map">
+    <section id="creat_new_map">
       <h2>Create a new map</h2>
     </section>
 
