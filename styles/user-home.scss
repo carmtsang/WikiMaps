@@ -16,19 +16,33 @@ section {
 .section_head, .user_map_list {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+}
+
+.map_name_description{
+  width: 100%;
+  border-bottom: solid rgb(48, 99, 142, 0.2);
+}
+
+.map_name_description {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+
+  a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #30638E;
+  }
+
 }
 
 
 .button {
-  background-color: #30638E;
   border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 24px;
-  margin-bottom: 5px;
+  color: rgb(48, 99, 142);
+  background-color: rgb(236, 247, 249);
+  padding: 0;
 }
 
 

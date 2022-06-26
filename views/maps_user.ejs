@@ -50,32 +50,39 @@
             <i class="fa-solid fa-map-pin"></i>
           </div>
           <div class="user_map_list">
-            <a href="/maps/id">Calgary Vegan Restaurants</a>
-            <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            <div class="map_name_description">
+              <a href="/maps/id">Calgary Vegan Restaurants</a>
+              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            </div>
             <form action="/maps/:id/:delete" method="post">
               <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
             </form>
           </div>
-        <div class="user_map_list">
-          <a href="/maps/id">Exotic house</a>
-          <form action="/maps/:id/:delete" method="post">
-            <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
-          </form>
+          <div class="user_map_list">
+            <div class="map_name_description">
+              <a href="/maps/id">Dog parks</a>
+              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            </div>
+            <form action="/maps/:id/:delete" method="post">
+              <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+            </form>
+          </div>
+          </section>
+          <section id="my_contributions">
+            <div class="section_head">
+              <h2>My Contributions </h2>
+              <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="user_map_list map_name_description">
+              <a href="/maps/id">Exotic House Plants</a>
+              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            </div>
+            <div class="user_map_list map_name_description">
+              <a href="/maps/id">Best Coffee Shops</a>
+              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            </div>
+          </section>
         </div>
-        </section>
-        <section id="my_contributions">
-          <div class="section_head">
-            <h2>My Contributions </h2>
-            <i class="fa-solid fa-map-location-dot"></i>
-          </div>
-          <div class="user_map_list">
-            <a href="/maps/id">Movie locations</a>
-          </div>
-          <div class="user_map_list">
-            <a href="/maps/id">Instagram worthy restaurants</a>
-          </div>
-        </section>
-      </div>
 
       <div class="right">
         <section class="map_list">
@@ -84,7 +91,7 @@
             <i class="fa-solid fa-location-pin-lock"></i>
           </div>
           <div class="liked_map">
-            <div>
+            <div class="user_map_list map_name_description">
               <a href="#">Random liked map 1</a>
               <p>description of map</p>
             </div>
@@ -93,7 +100,7 @@
             </span>
           </div>
           <div class="liked_map">
-            <div>
+            <div class="user_map_list map_name_description">
               <a href="#">Random liked Map 2</a>
               <p>description of map</p>
             </div>
@@ -102,7 +109,7 @@
             </span>
           </div>
           <div class="liked_map">
-            <div>
+            <div class="user_map_list map_name_description">
               <a href="#">Random liked Map 3</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
