@@ -6,7 +6,7 @@
 section {
   display: flex;
   flex-direction: column;
-  border: solid #30638E;
+  border: solid rgb(48, 99, 142, 0.2);
   border-radius: 1em;
   width: 30rem;
   padding: 0 2rem;
@@ -25,9 +25,17 @@ section {
   padding: 1rem;
 }
 
-button {
-  margin: .5rem;
+.button {
+  background-color: #30638E;
+  border: none;
+  color: white;
+  padding: 10px 26px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
+
 
 i {
   font-size: 24px;
@@ -39,4 +47,15 @@ i {
   flex-direction: column;
   min-width: 900px;
   height: auto;
+}
+
+.liked_map {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.fa-heart {
+  padding: 0;
+  color: #D1495B;
 }
