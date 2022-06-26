@@ -45,10 +45,13 @@
     <div id="profile_items">
       <div class="left">
         <section id="my_maps">
-          <h2>My Maps</h2>
+          <div class="section_head">
+            <h2>My Maps</h2>
+            <i class="fa-solid fa-map-pin"></i>
+          </div>
           <div class="user_map_list">
             <a href="/maps/id">Calgary Vegan Restaurants</a>
-            <div class="button">
+            <div class="buttons">
               <form action="/maps/:id" method="post">
                 <button type="submit">Edit</button>
               </form>
@@ -59,7 +62,7 @@
         </div>
         <div class="user_map_list">
           <a href="/maps/id">Exotic house</a>
-          <div class="button">
+          <div class="buttons">
             <form action="/maps/:id" method="post">
               <button type="submit">Edit</button>
             </form>
@@ -70,29 +73,35 @@
         </div>
         </section>
         <section id="my_contributions">
-          <h2>My Contributions</h2>
+          <div class="section_head">
+            <h2>My Contributions </h2>
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
           <div class="user_map_list">
             <a href="/maps/id">Movie locations</a>
-            <div class="button">
+
               <form action="/maps/:id" method="post">
                 <button type="submit">Edit</button>
               </form>
-          </div>
+
         </div>
         <div class="user_map_list">
           <a href="/maps/id">Instagram worthy restaurants</a>
-          <div class="button">
+
             <form action="/maps/:id" method="post">
               <button type="submit">Edit</button>
             </form>
-          </div>
+
         </div>
         </section>
       </div>
 
       <div class="right">
         <section class="map-list">
-          <h2>Favourite Maps</h2>
+          <div class="section_head">
+            <h2>Favourite Maps</h2>
+            <i class="fa-solid fa-location-pin-lock"></i>
+          </div>
           <div class="liked-map">
             <a href="#">Random liked map 1</a>
             <p>description of map</p>
@@ -120,7 +129,11 @@
 
 
     <section id="create_new_map">
-      <h2>Create a new map</h2>
+      <div class="section_head">
+        <h2>Create a new map</h2>
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
+
       <div id="map"></div>
     </section>
 
