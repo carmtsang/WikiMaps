@@ -1,9 +1,18 @@
+#profile {
 
+  flex-direction: row;
+}
 
 section {
   display: flex;
   flex-direction: column;
+  border: solid #30638E;
+  border-radius: 1em;
+  width: 20rem;
+  padding: 0 2rem;
+  margin: 2rem;
 }
+
 
 .user_map_list {
   display: flex;
@@ -12,5 +21,5 @@ section {
 }
 
 .button {
-  display: flex;
+  display:flex;
 }

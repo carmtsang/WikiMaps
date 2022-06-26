@@ -30,83 +30,86 @@
 </head>
 <body>
   <%- include('partials/_header') %>
-  <main class="container">
-    <header>
-      <h1>Username's Profile</h1>
-    </header>
+  <header>
+    <h1>Username's Profile</h1>
+  </header>
 
-    <section id="my_maps">
-      <h2>My Maps</h2>
+  <main class="container" id="profile">
+    <div class="left">
+      <section id="my_maps">
+        <h2>My Maps</h2>
+        <div class="user_map_list">
+          <a href="/maps/id">Calgary Vegan Restaurants</a>
+          <div class="button">
+            <form action="/maps/:id" method="post">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/maps/:id/:delete" method="post">
+              <button type="submit">Delete</button>
+            </form>
+        </div>
+      </div>
       <div class="user_map_list">
-        <a href="/maps/id">Calgary Vegan Restaurants</a>
+        <a href="/maps/id">Exotic house</a>
         <div class="button">
           <form action="/maps/:id" method="post">
             <button type="submit">Edit</button>
           </form>
+
           <form action="/maps/:id/:delete" method="post">
             <button type="submit">Delete</button>
           </form>
+        </div>
       </div>
-    </div>
-    <div class="user_map_list">
-      <a href="/maps/id">Exotic house</a>
-      <div class="button">
-        <form action="/maps/:id" method="post">
-          <button type="submit">Edit</button>
-        </form>
-
-        <form action="/maps/:id/:delete" method="post">
-          <button type="submit">Delete</button>
-        </form>
+      </section>
+      <section id="my_contributions">
+        <h2>My Contributions</h2>
+        <div class="user_map_list">
+          <a href="/maps/id">Movie locations</a>
+          <div class="button">
+            <form action="/maps/:id" method="post">
+              <button type="submit">Edit</button>
+            </form>
+        </div>
       </div>
-    </div>
-    </section>
-    <section id="my_contributions">
-      <h2>My Contributions</h2>
-
       <div class="user_map_list">
-        <a href="/maps/id">Movie locations</a>
+        <a href="/maps/id">Instagram worthy restaurants</a>
         <div class="button">
           <form action="/maps/:id" method="post">
             <button type="submit">Edit</button>
           </form>
+        </div>
       </div>
+      </section>
     </div>
 
-    <div class="user_map_list">
-      <a href="/maps/id">Instagram worthy restaurants</a>
-      <div class="button">
-        <form action="/maps/:id" method="post">
-          <button type="submit">Edit</button>
-        </form>
-      </div>
+    <div class="right">
+      <section class="map-list">
+        <h2>Favourite Maps</h2>
+        <div class="liked-map">
+          <a href="#">Random liked map 1</a>
+          <p>description of map</p>
+          <span class="heart-icon">
+            <i class="fa-solid fa-heart"></i>
+          </span>
+        </div>
+        <div class="liked-map">
+          <a href="#">Random liked Map 2</a>
+          <p>description of map</p>
+          <span class="heart-icon">
+            <i class="fa-solid fa-heart"></i>
+          </span>
+        </div>
+        <div class="liked-map">
+          <a href="#">Random liked Map 3</a>
+          <p>description of map</p>
+          <span class="heart-icon">
+            <i class="fa-solid fa-heart"></i>
+          </span>
+        </div>
+      </section>
     </div>
-    </section>
 
-    <section class="map-list">
-      <h2>Favourite Maps</h2>
-      <div class="liked-map">
-        <a href="#">Random liked map 1</a>
-        <p>description of map</p>
-        <span class="heart-icon">
-          <i class="fa-solid fa-heart"></i>
-        </span>
-      </div>
-      <div class="liked-map">
-        <a href="#">Random liked Map 2</a>
-        <p>description of map</p>
-        <span class="heart-icon">
-          <i class="fa-solid fa-heart"></i>
-        </span>
-      </div>
-      <div class="liked-map">
-        <a href="#">Random liked Map 3</a>
-        <p>description of map</p>
-        <span class="heart-icon">
-          <i class="fa-solid fa-heart"></i>
-        </span>
-      </div>
-    </section>
     <section id="creat_new_map">
       <h2>Create a new map</h2>
     </section>
