@@ -8,18 +8,26 @@ section {
   flex-direction: column;
   border: solid #30638E;
   border-radius: 1em;
-  width: 20rem;
+  width: 30rem;
   padding: 0 2rem;
   margin: 2rem;
 }
-
 
 .user_map_list {
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .button {
   display:flex;
+  padding: .5rem;
+}
+
+#create_new_map {
+  display: flex;
+  flex-direction: column;
+  min-width: 900px;
+  height: auto;
 }
