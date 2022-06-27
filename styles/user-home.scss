@@ -1,14 +1,20 @@
 #profile_items {
   display: flex;
   flex-direction: row;
+  min-width: 66rem;
+}
+
+#create-new-map {
+  display: flex;
+  flex-direction: column;
+  min-width: 66rem;
+  height: auto;
 }
 
 section {
   display: flex;
   flex-direction: column;
-  width: 30rem;
-
-  margin: 2rem;
+  margin: 1.5rem;
 
   .section_head {
     background-color: rgb(48, 99, 142, 0.2);
@@ -27,11 +33,11 @@ section {
   border-bottom: solid rgb(48, 99, 142, 0.2);
 }
 
-.map_name_description {
+.map-name-description {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
-  width: 100%;
+  width: 28rem;
 
   a {
     text-decoration: none;
@@ -39,7 +45,6 @@ section {
     font-weight: 600;
     color: #30638E;
   }
-
 }
 
 .button {
@@ -55,15 +60,8 @@ i {
   padding-top: 1.2rem;
 }
 
-#create_new_map {
-  display: flex;
-  flex-direction: column;
-  min-width: 66rem;
-  height: auto;
-}
-
-
-
 .fa-heart {
   color: #D1495B;
 }
+
+

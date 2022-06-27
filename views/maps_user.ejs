@@ -41,38 +41,37 @@
     <h1>Username's Profile</h1>
   </header>
 
-  <section id="create_new_map">
-    <div class="section_head">
-      <h2>Create a new map</h2>
-      <i class="fa-solid fa-location-crosshairs"></i>
-    </div>
-    <div id="create_map_body">
-      <div id="map"></div>
-      <form action="/maps" method="post">
-        <label for="map_name">Map Name</label>
-        <input type="text" id="map_name" name="name" value="Name your map"><br>
-        <label for="map_description">What are you bookmarking?</label>
-        <textarea name="text" id="map_description"></textarea>
-        <div class="button-counter">
-          <button type="submit">Add Map</button>
-          <output name="counter" class="counter" for="tweet-text">100</output>
-        </div>
-      </form>
-    </div>
-
-  </section>
-
-
   <main class="container">
+
+    <section id="create-new-map">
+      <div class="section_head">
+        <h2>Create a new map</h2>
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
+      <div id="create_map_body">
+        <div id="map"></div>
+        <form action="/maps" method="post">
+          <label for="map_name">Map Name</label>
+          <input type="text" id="map_name" name="name" value="Name your map"><br>
+          <label for="map_description">What are you bookmarking?</label>
+          <textarea name="text" id="map_description"></textarea>
+          <div class="button-counter">
+            <button type="submit">Add Map</button>
+            <output name="counter" class="counter" for="tweet-text">100</output>
+          </div>
+        </form>
+      </div>
+    </section>
+
     <div id="profile_items">
-      <div class="left">
-        <section id="my_maps">
+      <div class="profile-column">
+        <section id="my-maps">
           <div class="section_head">
             <h2>My Maps</h2>
             <i class="fa-solid fa-map-pin"></i>
           </div>
           <div class="user_map_list">
-            <div class="map_name_description">
+            <div class="map-name-description">
               <a href="/maps/id">Calgary Vegan Restaurants</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
@@ -81,7 +80,7 @@
             </form>
           </div>
           <div class="user_map_list">
-            <div class="map_name_description">
+            <div class="map-name-description">
               <a href="/maps/id">Dog parks</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
@@ -90,30 +89,30 @@
             </form>
           </div>
           </section>
-          <section id="my_contributions">
+          <section id="my-contributions">
             <div class="section_head">
               <h2>My Contributions </h2>
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <div class="user_map_list map_name_description">
+            <div class="user_map_list map-name-description">
               <a href="/maps/id">Exotic House Plants</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
-            <div class="user_map_list map_name_description">
+            <div class="user_map_list map-name-description">
               <a href="/maps/id">Best Coffee Shops</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
           </section>
         </div>
 
-      <div class="right">
+      <div class="column">
         <section class="map_list">
           <div class="section_head">
             <h2>Favourite Maps</h2>
             <i class="fa-solid fa-location-pin-lock"></i>
           </div>
           <div class="user_map_list">
-            <div class="map_name_description">
+            <div class="map-name-description>
               <a href="#">Random liked map 1</a>
               <p>description of map</p>
             </div>
@@ -123,7 +122,7 @@
 
           </div>
           <div class="user_map_list">
-            <div class="map_name_description">
+            <div class="map-name-description">
               <a href="#">Random liked Map 2</a>
               <p>description of map</p>
             </div>
@@ -133,7 +132,7 @@
 
           </div>
           <div class="user_map_list">
-            <div class="map_name_description">
+            <div class="map-name-description">
               <a href="#">Random liked Map 3</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
