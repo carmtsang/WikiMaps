@@ -6,11 +6,15 @@
 section {
   display: flex;
   flex-direction: column;
-  border: solid rgb(48, 99, 142, 0.2);
-  border-radius: 1em;
   width: 30rem;
-  padding: 0 2rem;
+
   margin: 2rem;
+
+  .section_head {
+    background-color: rgb(48, 99, 142, 0.2);
+    padding: 0 1rem;
+    border-radius: 1rem 1rem 0 0;
+  }
 }
 
 .section_head, .user_map_list {
@@ -18,7 +22,7 @@ section {
   justify-content: space-between;
 }
 
-.map_name_description{
+.user_map_list{
   width: 100%;
   border-bottom: solid rgb(48, 99, 142, 0.2);
 }
@@ -27,6 +31,7 @@ section {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -43,6 +48,7 @@ section {
   color: rgb(48, 99, 142);
   background-color: rgb(236, 247, 249);
   padding: 0;
+  margin: 1em;
 }
 
 
@@ -58,13 +64,10 @@ i {
   height: auto;
 }
 
-.liked_map {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1em;
-}
+
 
 .fa-heart {
   padding: 0;
   color: #D1495B;
+  margin: 1em;
 }
