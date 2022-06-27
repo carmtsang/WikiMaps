@@ -42,15 +42,13 @@ section {
 
 }
 
-
 .button {
   border: none;
-  color: rgb(48, 99, 142);
+  color: #00798C;
   background-color: rgb(236, 247, 249);
   padding: 0;
   margin: 1em;
 }
-
 
 i {
   font-size: 24px;
@@ -60,14 +58,12 @@ i {
 #create_new_map {
   display: flex;
   flex-direction: column;
-  min-width: 900px;
+  min-width: 66rem;
   height: auto;
 }
 
 
 
 .fa-heart {
-  padding: 0;
   color: #D1495B;
-  margin: 1em;
 }
