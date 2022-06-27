@@ -48,16 +48,17 @@
         <h2>Create a new map</h2>
         <i class="fa-solid fa-location-crosshairs"></i>
       </div>
-      <div id="create_map_body">
+      <div id="create-map-body">
         <div id="map"></div>
+
         <form action="/maps" method="post">
-          <label for="map_name">Map Name</label>
-          <input type="text" id="map_name" name="name" value="Name your map"><br>
-          <label for="map_description">What are you bookmarking?</label>
-          <textarea name="text" id="map_description"></textarea>
+          <label for="map-name">Map Name</label>
+          <input type="text" id="map-name" name="name" value="Name your map"><br>
+          <label for="map-description">What are you bookmarking?</label>
+          <textarea name="text" id="map-description"></textarea>
           <div class="button-counter">
             <button type="submit">Add Map</button>
-            <output name="counter" class="counter" for="tweet-text">100</output>
+            <output name="counter" class="counter" for="map-description">100</output>
           </div>
         </form>
       </div>
@@ -105,14 +106,14 @@
           </section>
         </div>
 
-      <div class="column">
+      <div class="profile-column">
         <section class="map_list">
           <div class="section_head">
             <h2>Favourite Maps</h2>
             <i class="fa-solid fa-location-pin-lock"></i>
           </div>
           <div class="user_map_list">
-            <div class="map-name-description>
+            <div class="map-name-description">
               <a href="#">Random liked map 1</a>
               <p>description of map</p>
             </div>

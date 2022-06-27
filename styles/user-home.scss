@@ -29,15 +29,16 @@ section {
 }
 
 .user_map_list{
-  width: 100%;
+
   border-bottom: solid rgb(48, 99, 142, 0.2);
+  width: 31rem;
 }
 
 .map-name-description {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
-  width: 28rem;
+
 
   a {
     text-decoration: none;
