@@ -37,8 +37,11 @@
 </head>
 <body>
   <%- include('partials/_header') %>
-  <header>
-    <h1>Username's Profile</h1>
+  <header id="profile-head">
+    <div id="profile-pic">
+      <img src="/images/wikimaps_logo.png">
+    </div>
+    <h1>FirstName LastName</h1>
   </header>
 
   <main class="container">
@@ -51,9 +54,9 @@
       <div id="create-map-body">
         <div id="map"></div>
 
-        <form action="/maps" method="post">
+        <form id="new-map-form" action="/maps" method="post">
           <label for="map-name">Map Name</label>
-          <input type="text" id="map-name" name="name" value="Name your map"><br>
+          <input type="text" id="map-name" name="name" value="eg. Best Coffee in Town"><br>
           <label for="map-description">What are you bookmarking?</label>
           <textarea name="text" id="map-description"></textarea>
           <div class="button-counter">
