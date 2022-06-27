@@ -18,3 +18,20 @@ body {
 h1, p {
   color: #003d5b;
 }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  align-items: center;
+  justify-content: right;
+  width: 100vw;
+  height: 80px;
+  background-color: #003d5b;
+}
+
+.nav-item {
+  color: #EDAE49;
+  text-decoration: none;
+  padding-right: 1em;
+}
