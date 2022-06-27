@@ -4,6 +4,24 @@
   min-width: 66rem;
 }
 
+#profile-head {
+  display: flex;
+  width: 66em;
+  padding-top: 1em;
+
+  h1 {
+    width: 100%;
+    align-content: center;
+  }
+  img {
+    background-color: #EDAE49;
+    border-radius: 75%;
+    width: 200px;
+    height: auto;
+    margin-right: 3rem;
+  }
+}
+
 #create-new-map {
   display: flex;
   flex-direction: column;
