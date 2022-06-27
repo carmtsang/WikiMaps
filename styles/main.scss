@@ -26,19 +26,27 @@ h1, p {
   color: #003d5b;
 }
 
+// Nav bar styling
 .navbar {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
   width: 100vw;
-  height: 80px;
+  height: 100px;
   background-color: #003d5b;
+  padding: 0.2rem 1rem;
 }
 
-.nav-item {
+.nav-link {
   color: #EDAE49;
   text-decoration: none;
   padding-right: 1em;
 }
+
+.logo img {
+  width: 5rem;
+  height: auto;
+}
+// Nav bar styling end
