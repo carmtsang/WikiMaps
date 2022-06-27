@@ -41,6 +41,28 @@
     <h1>Username's Profile</h1>
   </header>
 
+  <section id="create_new_map">
+    <div class="section_head">
+      <h2>Create a new map</h2>
+      <i class="fa-solid fa-location-crosshairs"></i>
+    </div>
+    <div id="create_map_body">
+      <div id="map"></div>
+      <form action="/maps" method="post">
+        <label for="map_name">Map Name</label>
+        <input type="text" id="map_name" name="name" value="Name your map"><br>
+        <label for="map_description">What are you bookmarking?</label>
+        <textarea name="text" id="map_description"></textarea>
+        <div class="button-counter">
+          <button type="submit">Add Map</button>
+          <output name="counter" class="counter" for="tweet-text">100</output>
+        </div>
+      </form>
+    </div>
+
+  </section>
+
+
   <main class="container">
     <div id="profile_items">
       <div class="left">
@@ -124,14 +146,6 @@
     </div>
 
 
-    <section id="create_new_map">
-      <div class="section_head">
-        <h2>Create a new map</h2>
-        <i class="fa-solid fa-location-crosshairs"></i>
-      </div>
-
-      <div id="map"></div>
-    </section>
 
 
   </main>
