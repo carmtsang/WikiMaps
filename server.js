@@ -47,7 +47,6 @@ app.use("/users", usersRoutes(db));
 
 // app.use("/api/widgets", widgetsRoutes(db));
 
-
 app.use('/maps', mapsRoutes(db));
 app.use(locationsRoutes(db));
 // app.use(commentsRoutes(db));
