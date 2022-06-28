@@ -3,9 +3,7 @@
 
 $(() => {
 
-  const renderMap => maps => {
-    for ()
-  }
+
 
   // function to prevent XSS
   const escape = str => {
