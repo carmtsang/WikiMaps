@@ -7,7 +7,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-const users = require('./constants')
+
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -44,6 +44,7 @@ const locationsRoutes = require("./routes/locations");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/users", usersRoutes(db));
+
 // app.use("/api/widgets", widgetsRoutes(db));
 
 
@@ -59,6 +60,8 @@ app.use(locationsRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
