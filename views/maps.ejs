@@ -67,6 +67,27 @@
       </div>
     </section>
 
+    <!-- Page-specific (main) content here -->
+    <main class="container">
+      <section class="new-tweet">
+        <span id="errorMessage"></span>
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" class="form" method="POST">
+          <textarea name="text" id="tweet-text" type="tweet" click="empty()"
+            placeholder="What are you humming about?"></textarea>
+          <div>
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" id="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <section class="tweets-container"></section>
+    </main>
+  </div>
+</body>
+
+</html>
+
     <script type="text/javascript" src="/scripts/leaflet.js"></script>
   </body>
   </html>
