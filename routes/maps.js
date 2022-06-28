@@ -19,6 +19,16 @@ module.exports = (db) => {
     //       .json({ error: err.message });
     //   });
   });
+
+  router.post('/', (req, res) => {
+    if(!req.body.text) {
+      res.status(400).json({ error: 'Invalid Request: no data in POST body'});
+      return;
+    } else {
+      res.redirect("/users")
+    }
+
+  })
   return router;
 
 
