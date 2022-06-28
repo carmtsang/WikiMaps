@@ -5,8 +5,14 @@ const router  = express.Router();
 
 
 module.exports = (db) => {
+<<<<<<< HEAD
   router.get("/maps", (req, res) => {
     res.render('maps');
+=======
+  router.get("/", (req, res) => {
+    res.render('maps');
+
+>>>>>>> master
     // db.query(`SELECT * FROM maps;`)
     //   .then(data => {
     //     const users = data.rows;
