@@ -44,6 +44,7 @@ const commentsRoutes = require("./routes/comments");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+
 app.use(mapsRoutes(db));
 app.use(locationsRoutes(db));
 app.use(commentsRoutes(db));
