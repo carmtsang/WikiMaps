@@ -5,38 +5,19 @@ const router  = express.Router();
 
 
 module.exports = (db) => {
-  router.get('/maps', (req, res) => {
-    res.render('maps_user')
-  })
-
-  router.get('/maps', (req, res) => {
+  router.get("/", (req, res) => {
     db.query(`SELECT * FROM maps;`)
       .then(data => {
-        const maps = data.rows;
-        res.json({ maps });
-        })
-        .catch(err => {
-          res
-            .status(500)
-            .json({ error: err.message });
-        })
-
-  })
-
-  // need to create addMap function for db
-  // router.post('/maps', (req, res) => {
-  //   db.addMap({req.body,... })
-  //     .then(map => {
-  //       res.send(map);
-  //     })
-  // })  .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  // })
-
+        const users = data.rows;
+        res.json({ users });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return router;
-
 
 
 };
