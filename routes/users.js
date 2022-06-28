@@ -12,9 +12,9 @@ const cookieParser = require('cookie-parser')
 // const { users } = require('../constants');
 
 module.exports = (db) => {
-  // router.get('/', (req, res) => {
-  //   res.render('users');
-  // })
+  router.get('/', (req, res) => {
+    res.render('users');
+  })
 
   router.get('/login/:user_id', (req, res) => {
     res.cookie('user_id', req.params.user_id);
