@@ -22,38 +22,6 @@
   }
 }
 
-#create-new-map {
-  display: flex;
-  flex-direction: column;
-  min-width: 66rem;
-  height: auto;
-}
-
-#create-map-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#new-map-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  label {
-    font-size: 18px;
-    font-weight: bold;
-    color: #003d5b;
-  }
-
-  .button-counter {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-  }
-
-}
-
 section {
   display: flex;
   flex-direction: column;
