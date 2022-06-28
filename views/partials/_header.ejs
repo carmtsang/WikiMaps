@@ -5,9 +5,15 @@
       <a href="/"><img src="/images/wikimaps_logo.png"></a>
     </div>
     <div class="nav-links">
-      <a class="nav-item nav-link" href="#">Login</a>
-      <a class="nav-item nav-link" href="#">Sign Up</a>
-      <a class="nav-item nav-link" href="/maps">My Maps</a>
+<% if (req.params.user_id) { %>
+        <a href="/maps">My Maps</a>
+        <form action="/logout" method="POST">
+          <button type="submit">log out</button>
+        </form>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
     </div>
   </div>
 </nav>
