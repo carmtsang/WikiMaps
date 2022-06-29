@@ -9,4 +9,4 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-const marker = L.marker([51.5, -0.09]).addTo(map);
+
