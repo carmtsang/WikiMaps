@@ -14,7 +14,7 @@ module.exports = (db) => {
     if (!user) {
       res.redirect(401, '/');
     } else {
-      res.render('maps');
+      res.render('maps', { user: req.cookies.user_id });
     }
 
     // db.query(`SELECT * FROM maps;`)
