@@ -27,11 +27,12 @@ module.exports = (db) => {
   router.get('/', (req, res) => {
     // user is the cookie num
     const user = req.cookies.user_id;
+
     console.log(user)
     if (!user) {
       res.redirect(401, '/');
     } else {
-      res.render('users');
+      res.render('users', { user: req.cookies.user_id });
     }
 
   })
@@ -41,7 +42,6 @@ module.exports = (db) => {
     res.clearCookie('user_id');
     res.redirect('/');
   })
-
 
   return router;
 
