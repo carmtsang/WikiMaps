@@ -9,19 +9,29 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-// const { users } = require('../constants');
+const { users } = require('../constants');
+const { getUserById } = require('../helpers');
 
 module.exports = (db) => {
+  router.get("/users.json", (req,res) => {
+    res.json(users)
+  })
+
+  // user login.
+  router.get('/login/:user_id', (req, res) => {
+    res.cookie('user_id', req.params.user_id);
+    res.redirect('/');
+  })
+
+  // route to user home page
   router.get('/', (req, res) => {
-    console.log(req)
+    const user = req.params.id
+    // console.log(res)
+    console.log('user,', user)
     res.render('users');
   })
 
-  router.get('/login/:user_id', (req, res) => {
-    res.cookie('user_id', req.params.user_id);
 
-    res.redirect('/');
-  })
 
   return router;
 

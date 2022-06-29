@@ -1,11 +1,16 @@
 const express = require('express');
 const router  = express.Router();
 
-// need to figure out to route db & render page
+const { users } = require('../constants');
+const { getUserById } = require('../helpers');
 
 
 module.exports = (db) => {
+
+  // create a new map. if user is not logged in, redirect to login. /maps/new
   router.get("/", (req, res) => {
+    // console.log('req:', req)
+    // console.log('res:', res)
     res.render('maps');
 
     // db.query(`SELECT * FROM maps;`)
@@ -19,6 +24,7 @@ module.exports = (db) => {
     //       .json({ error: err.message });
     //   });
   });
+
 
   router.post('/', (req, res) => {
     if(!req.body.text) {
