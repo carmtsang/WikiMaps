@@ -12,10 +12,15 @@ const cookieParser = require('cookie-parser')
 const { users } = require('../constants');
 const { getUserById } = require('../helpers');
 
-module.exports = (db) => {
-  router.get("/users.json", (req,res) => {
-    res.json(users)
+const selectAllUsers = db => {
+  const query = 'SELECT * FROM users;'
+  return db.query(query)
+  .then((result) => {
+    return result.rows;
   })
+}
+
+module.exports = (db) => {
 
   // user login.
   router.get('/login/:user_id', (req, res) => {
@@ -23,18 +28,25 @@ module.exports = (db) => {
     res.redirect('/');
   })
 
+
   // route to user home page
   router.get('/', (req, res) => {
     // user is the cookie num
-    const user = req.cookies.user_id;
+    const userID = req.cookies.user_id;
 
-    console.log(user)
-    if (!user) {
+
+    selectAllUsers(db)
+      .then((users) => {
+        console.log(users)
+        // res.json({users})
+      })
+
+
+    if (!userID) {
       res.redirect(401, '/');
     } else {
       res.render('users', { user: req.cookies.user_id });
     }
-
   })
 
   // logout using /users/logout
