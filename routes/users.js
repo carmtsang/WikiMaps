@@ -9,8 +9,8 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const { users } = require('../constants');
-const { getUserById } = require('../user-helpers');
+
+const { getUser } = require('../user-helpers');
 
 const selectAllUsers = db => {
   const query = 'SELECT * FROM users;'
@@ -20,69 +20,40 @@ const selectAllUsers = db => {
   })
 }
 
-const getUser = (userID, db) => {
-  const queryString = `SELECT * FROM users
-  WHERE id = $1;`
-  return db
-    .query(queryString, [userID])
-    .then((res) => {
-      return res.rows[0]})
-    .catch(err => console.error(err.stack))
-}
 
 const getUserMadeMaps = (userID, db) => {
   const queryString = `SELECT * FROM maps WHERE owner_id = $1`
   return db
     .query(queryString, [userID])
     .then((res) => {
-      return res.rows[0]})
+      return res.rows})
     .catch(err => console.error(err.stack))
 }
 
 module.exports = (db) => {
   // user login.
   router.get('/login/:user_id', (req, res) => {
-
     res.cookie('user_id', req.params.user_id);
     res.redirect('/');
   })
 
-
-  // get user json
-  // router.get('/:id', (req, res) => {
-  //   // user is the cookie num
-  //   const userID = req.cookies.user_id;
-
-
-  //   getUser(userID, db)
-  //     .then(user => {
-  //       console.log(user)
-  //       res.json(user)
-  //     })
-  //     .catch(err => console.error(err.stack))
-  // })
-
-  // to load the map page
+  // load user home page
   router.get('/', (req, res) => {
     const userID = req.cookies.user_id;
-    const user = getUser(userID, db)
+    getUser(userID, db)
       .then(user => {
         const templateVars = { user: user.name }
-        console.log('in get /:', user)
         res.render('users', templateVars)
       })
       .catch(err => console.error(err.stack))
-
-
-
-
   })
-
   // logout using /users/logout
   router.get('/logout', (req, res) => {
     res.clearCookie('user_id');
     res.redirect('/');
   })
+
+
 
   return router;
 
