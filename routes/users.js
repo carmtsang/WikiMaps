@@ -25,12 +25,22 @@ module.exports = (db) => {
 
   // route to user home page
   router.get('/', (req, res) => {
-    const user = req.params.id
-    // console.log(res)
-    console.log('user,', user)
-    res.render('users');
+    // user is the cookie num
+    const user = req.cookies.user_id;
+    console.log(user)
+    if (!user) {
+      res.redirect(401, '/');
+    } else {
+      res.render('users');
+    }
+
   })
 
+  // logout using /users/logout
+  router.get('/logout', (req, res) => {
+    res.clearCookie('user_id');
+    res.redirect('/');
+  })
 
 
   return router;
