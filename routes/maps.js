@@ -1,17 +1,21 @@
 const express = require('express');
 const router  = express.Router();
 
-const { users } = require('../constants');
+const { users, maps } = require('../constants');
 const { getUserById } = require('../helpers');
 
 
 module.exports = (db) => {
 
-  // create a new map. if user is not logged in, redirect to login. /maps/new
+  // renders the individual map
   router.get("/", (req, res) => {
-    // console.log('req:', req)
-    // console.log('res:', res)
-    res.render('maps');
+    const user = req.cookies.user_id;
+
+    if (!user) {
+      res.redirect(401, '/');
+    } else {
+      res.render('maps');
+    }
 
     // db.query(`SELECT * FROM maps;`)
     //   .then(data => {
@@ -26,7 +30,9 @@ module.exports = (db) => {
   });
 
 
+  // posting a new map
   router.post('/', (req, res) => {
+    console.log(req.body)
     res.redirect('/')
   })
   return router;
