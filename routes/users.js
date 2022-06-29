@@ -30,7 +30,14 @@ const getUser = (userID, db) => {
     .catch(err => console.error(err.stack))
 }
 
-// const getUserMadeMaps = (user, db)
+const getUserMadeMaps = (userID, db) => {
+  const queryString = `SELECT * FROM maps WHERE owner_id = $1`
+  return db
+    .query(queryString, [userID])
+    .then((res) => {
+      return res.rows[0]})
+    .catch(err => console.error(err.stack))
+}
 
 module.exports = (db) => {
   // user login.
@@ -42,22 +49,34 @@ module.exports = (db) => {
 
 
   // get user json
-  router.get('/:id', (req, res) => {
-    // user is the cookie num
-    const userID = req.cookies.user_id;
+  // router.get('/:id', (req, res) => {
+  //   // user is the cookie num
+  //   const userID = req.cookies.user_id;
 
-    getUser(userID, db)
-      .then(user => {
-        console.log(user)
-        res.json(user)
-      })
-      .catch(err => console.error(err.stack))
-  })
+
+  //   getUser(userID, db)
+  //     .then(user => {
+  //       console.log(user)
+  //       res.json(user)
+  //     })
+  //     .catch(err => console.error(err.stack))
+  // })
 
   // to load the map page
-  // router.get('/', (req, res) => {
-  //   render('users', { user: req.cookies.user_id })
-  // })
+  router.get('/', (req, res) => {
+    const userID = req.cookies.user_id;
+    const user = getUser(userID, db)
+      .then(user => {
+        const templateVars = { user: user.name }
+        console.log('in get /:', user)
+        res.render('users', templateVars)
+      })
+      .catch(err => console.error(err.stack))
+
+
+
+
+  })
 
   // logout using /users/logout
   router.get('/logout', (req, res) => {
