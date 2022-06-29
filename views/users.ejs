@@ -26,15 +26,8 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
 
-    <!-- Load Leaflet
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""></script> -->
-
 </head>
+
 <body>
   <%- include('partials/_header') %>
   <header id="profile-head">
@@ -45,28 +38,21 @@
   </header>
 
   <main class="container">
-<!--
-    <section id="create-new-map">
-      <div class="section_head">
-        <h2>Create a new map</h2>
-        <i class="fa-solid fa-location-crosshairs"></i>
-      </div>
-      <div id="create-map-body">
-        <div id="map"></div>
 
-        <form id="new-map-form" action="/maps" method="post">
-          <label for="map-name">Map Name</label>
-          <input type="text" id="map-name" name="name" value="eg. Best Coffee in Town"><br>
-          <label for="map-description">What are you bookmarking?</label>
-          <textarea name="text" id="map-description"></textarea>
-          <div class="button-counter">
-            <button type="submit">Add Map</button>
-            <output name="counter" class="counter" for="map-description">100</output>
-          </div>
-        </form>
-      </div>
-    </section> -->
 
+    <section>
+      <h2>Create a Map</h2>
+      <form id="new-map-form" action="/maps" method="post">
+        <label for="map-name">Map Name</label>
+        <input type="text" id="map-name" name="name" value="eg. Best Coffee in Town"><br>
+        <label for="map-description">What are you bookmarking?</label>
+        <textarea name="text" id="map-description"></textarea>
+        <button class="button-new"type="submit"><i class="fa-solid fa-location-dot"></i>Create a new Map <i class="fa-solid fa-map"></i></button>
+      </form>
+
+    </section>
+
+    <section>
     <div id="profile_items">
       <div class="profile-column">
         <section id="my-maps">
@@ -120,7 +106,7 @@
               <a href="#">Random liked map 1</a>
               <p>description of map</p>
             </div>
-            <form action="/maps/:id/:delete" method="post">
+            <form action="/likes/:delete" method="post">
               <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
             </form>
 
@@ -130,7 +116,7 @@
               <a href="#">Random liked Map 2</a>
               <p>description of map</p>
             </div>
-            <form action="/maps/:id/:delete" method="post">
+            <form action="/likes/:delete" method="post">
               <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
             </form>
 
@@ -140,7 +126,7 @@
               <a href="#">Random liked Map 3</a>
               <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
             </div>
-            <form action="/maps/:id/:delete" method="post">
+            <form action="/likes/:delete" method="post">
               <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
             </form>
           </div>
@@ -154,6 +140,5 @@
   </main>
 
 
-  <!-- <script type="text/javascript" src="/scripts/leaflet.js"></script> -->
 </body>
 </html>
