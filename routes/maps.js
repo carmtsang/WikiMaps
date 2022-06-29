@@ -1,13 +1,21 @@
 const express = require('express');
 const router  = express.Router();
 
-// need to figure out to route db & render page
+const { users, maps } = require('../constants');
+const { getUserById } = require('../helpers');
 
 
 module.exports = (db) => {
+
+  // renders the individual map
   router.get("/", (req, res) => {
-    console.log({req:req.cookies})
-    res.render('maps');
+    const user = req.cookies.user_id;
+
+    if (!user) {
+      res.redirect(401, '/');
+    } else {
+      res.render('maps');
+    }
 
     // db.query(`SELECT * FROM maps;`)
     //   .then(data => {
@@ -21,14 +29,11 @@ module.exports = (db) => {
     //   });
   });
 
-  router.post('/', (req, res) => {
-    if(!req.body.text) {
-      res.status(400).json({ error: 'Invalid Request: no data in POST body'});
-      return;
-    } else {
-      res.redirect("/users")
-    }
 
+  // posting a new map
+  router.post('/', (req, res) => {
+    console.log(req.body)
+    res.redirect('/')
   })
   return router;
 
