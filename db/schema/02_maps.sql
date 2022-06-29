@@ -3,6 +3,5 @@ CREATE TABLE maps (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255),
   description TEXT,
-  owner_id INTEGER REFERENCES users(id) on DELETE CASCADE,
-  like_id INTEGER REFERENCES users(id) on DELETE CASCADE
+  owner_id INTEGER REFERENCES users(id)
 );
