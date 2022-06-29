@@ -47,22 +47,3 @@ module.exports = (db) => {
 
 };
 
-
-// make a post for each
-
-
-// app.get('/urls', (req, res) => {
-//   const user = req.session.userId;
-
-//   if (!user) {
-//     res.status(401),
-//     res.redirect('/login')
-//   }
-
-//   const templateVars = {
-//     urls: urlsForUser(user, urlDatabase),
-//     user: users[user]
-//   };
-
-//   res.render("urls_index", templateVars);
-// });
