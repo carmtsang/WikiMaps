@@ -20,6 +20,16 @@ const selectAllUsers = db => {
   })
 }
 
+const getUser = (userID, db) => {
+  const queryString = `SELECT * FROM users
+  WHERE id = $1;`
+  return db
+    .query(queryString, [userID])
+    .then((res) => {
+      return res.rows[0]})
+    .catch(err => console.error(err.stack))
+}
+
 module.exports = (db) => {
 
   // user login.
@@ -37,8 +47,13 @@ module.exports = (db) => {
 
     selectAllUsers(db)
       .then((users) => {
-        console.log(users)
+        console.log('getallusers:', users)
         // res.json({users})
+      })
+
+    getUser(userID, db)
+      .then((user) => {
+        console.log('getUser:', user.name)
       })
 
 
