@@ -13,13 +13,11 @@ const cookieParser = require('cookie-parser')
 
 module.exports = (db) => {
   router.get('/', (req, res) => {
-    console.log(req)
-    res.render('users');
+    res.render('users', { userID: req.cookies.user_id });
   })
 
   router.get('/login/:user_id', (req, res) => {
     res.cookie('user_id', req.params.user_id);
-
     res.redirect('/');
   })
 

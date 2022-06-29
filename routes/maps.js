@@ -6,6 +6,7 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    console.log({req:req.cookies})
     res.render('maps');
 
     // db.query(`SELECT * FROM maps;`)
