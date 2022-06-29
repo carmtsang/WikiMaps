@@ -53,4 +53,7 @@ const maps = {
 
 }
 
-module.exports = users;
+module.exports = {
+  users,
+  maps
+};
