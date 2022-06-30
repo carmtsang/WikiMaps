@@ -2,32 +2,22 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const { getUsers, getUserMadeMaps } = require('../user-helpers');
+const { selectUserLikes, getUserMadeMaps, getUserContributions } = require('../user-helpers');
 
 
-const selectUserLikes = (userID, db) => {
-  const queryString = `SELECT maps.*, likes.* FROM likes
-  JOIN maps ON maps.id = map_id WHERE user_id = $1`
-  return db.query(queryString, [userID])
-    .then((res) => {
-      return res.rows;
-    })
-}
 
 module.exports = (db) => {
 
-
+// list of maps liked by user
   router.get('/user/likes', (req, res) => {
     const userID = req.cookies.user_id;
     selectUserLikes(userID, db)
-    .then(userLikes => {
-      res.json(userLikes)
-    })
+    .then(userLikes => res.json(userLikes))
     .catch(err => {
     res
       .status(500)
       .json({ error: err.message });
-  });
+    });
   })
 
   // maps created by the user
@@ -35,10 +25,7 @@ module.exports = (db) => {
     const userID = req.cookies.user_id;
 
     getUserMadeMaps(userID, db)
-      .then(userMaps => {
-        console.log(userMaps)
-        res.json(userMaps)
-      })
+      .then(userMaps => res.json(userMaps))
       .catch(err => {
         res
         .status(500)
@@ -46,6 +33,16 @@ module.exports = (db) => {
     });
   });
 
+  router.get('/user/add', (req, res) => {
+    const userID = req.cookies.user_id;
+    getUserContributions(userID, db)
+    .then(userAdd => res.json(userAdd))
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
+  });
 
   return router
 }

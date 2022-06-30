@@ -36,6 +36,19 @@ const getUserMadeMaps = (userID, db) => {
     .catch(err => console.error(err.stack))
 }
 
+const getUserContributions = (userID, db) => {
+  const queryString = `SELECT maps.name, maps.description, maps.owner_id, locations.owner_id
+  FROM locations JOIN maps on map_id = maps.id
+  WHERE maps.owner_id != locations.owner_id
+  AND locations.owner_id = $1
+  GROUP BY maps.name, maps.description, maps.owner_id, locations.owner_id`
+  return db
+    .query(queryString, [userID])
+    .then((res) => {
+      return res.rows})
+    .catch(err => console.error(err.stack))
+}
+
 const selectUserLikes = (userID, db) => {
   const queryString = `SELECT maps.*, likes.* FROM likes
   JOIN maps ON maps.id = map_id WHERE user_id = $1`
@@ -47,5 +60,7 @@ const selectUserLikes = (userID, db) => {
 
 module.exports = {
   getUser,
-  getUserMadeMaps
+  getUserMadeMaps,
+  selectUserLikes,
+  getUserContributions
 }
