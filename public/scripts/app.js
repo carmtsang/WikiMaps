@@ -1,4 +1,4 @@
-// Client facing scripts here
+// Client facing scripts for user home page
 
 // const { load } = require("dotenv");
 
@@ -28,18 +28,13 @@ $(() => {
 
   const loadUserMaps = () => {
     $.ajax('/api/user/maps', { method: 'GET' })
-      .then(userMaps => {
-        console.log('in loadUserMaps:', userMaps)
-        renderUserMaps(userMaps)
-      })
+      .then(userMaps => renderUserMaps(userMaps))
       .catch(error => console.log(error));
   }
 
-
-
   // add user likes
   renderUserLikes = userLikes => {
-    for (const like in userLikes) {
+    for (const like of userLikes) {
       let $post = addLikes(like);
       $('#my-likes').append($post);
     }
@@ -63,7 +58,6 @@ $(() => {
       .then(userLikes => renderUserLikes(userLikes))
       .catch(error => console.log(error));
   }
-
 
 
   loadUserMaps();
