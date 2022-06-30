@@ -78,18 +78,15 @@ app.get("/", (req, res) => {
 app.get("/login/:user_id", (req, res) => {
   const userID = req.params.user_id
   res.cookie('user_id', req.params.user_id);
-
-  getUser(userID, db)
-  .then(userID => {
-    const templateVars = { userID }
-    res.render('users', templateVars)
-  })
-  .catch(err => console.error(err.stack))
-  // res.redirect('/');
+  res.redirect('/users')
 })
 
 //Logout
 app.post("/logout", (req, res) => {
+  res.clearCookie('user_id')
+  res.redirect('/');
+})
+app.get("/logout", (req, res) => {
   res.clearCookie('user_id')
   res.redirect('/');
 })
