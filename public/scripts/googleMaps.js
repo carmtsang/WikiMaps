@@ -9,6 +9,7 @@ function initMap() {
     center: metro,
 });
 
+// creates a marker when clicked
 google.maps.event.addListener(map, 'click', function(e) {
   let location = e.latLng
 
@@ -24,9 +25,10 @@ google.maps.event.addListener(map, 'click', function(e) {
   console.log(lat);
   console.log(lng);
 
-  let contentAdd = `${lat} + ${lng}`;
+  // content that is on the infowindow
+  let contentAdd = `title: ` + `description: ` + `lat: ${lat} + lng: ${lng}`;
 
-
+  // adds the info window on the marker
     google.maps.event.addListener(marker, 'click', function(e) {
       let infoWindow = new google.maps.InfoWindow({
         content: contentAdd
