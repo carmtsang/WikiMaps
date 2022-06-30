@@ -9,7 +9,6 @@ $(() => {
     for (const map of userMaps) {
       let $post = createUserMaps(map);
       $('#my-maps').prepend($post);
-      console.log($post)
     }
   };
 
@@ -32,8 +31,28 @@ $(() => {
       .catch(error => console.log(error));
   }
 
+  const renderContribute = userAdd => {
+    for (const pin of userAdd) {
+      let $post = contribute(pin);
+      $('#my-contributions').prepend($post);
+    }
+  }
+
+  const contribute = map => {
+    return `<div class="user_map_list map-name-description">
+    <a href="/maps/${map.id}">${map.name}</a>
+      <p>${map.description} </p>
+    </div>`
+  };
+
+  const loadContributions = () => {
+    $.ajax('/api/user/add', { method: 'GET' })
+      .then(userAdd => renderContribute(userAdd))
+      .catch(error => console.log(error));
+  }
+
   // add user likes
-  renderUserLikes = userLikes => {
+  const renderUserLikes = userLikes => {
     for (const like of userLikes) {
       let $post = addLikes(like);
       $('#my-likes').append($post);
@@ -43,7 +62,7 @@ $(() => {
   const addLikes = likes => {
     return `<div class="user_map_list">
     <div class="map-name-description">
-      <a href="/maps/${likes.id}">${likes.name}</a>
+      <a href="/maps/${likes.map_id}">${likes.name}</a>
       <p>${likes.description}</p>
     </div>
     <form action="/likes/:delete" method="post">
@@ -62,5 +81,6 @@ $(() => {
 
   loadUserMaps();
   loadLikes();
+  loadContributions();
 
 });
