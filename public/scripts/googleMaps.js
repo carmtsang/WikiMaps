@@ -1,46 +1,38 @@
+// const { listen } = require("express/lib/application");
+
 // initialzie map onto the page
-let map;
-let markers = [];
-
 function initMap() {
-  const metro = { lat:49.278707132806545, lng:-123.11010267860881 };
+  const metro = { lat: 49.278707132806545, lng:-123.11010267860881 };
 
-  const map = new google.maps.Map(document.getElementById("map"), {
+  let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
     center: metro,
 });
 
+google.maps.event.addListener(map, 'click', function(e) {
+  let location = e.latLng
 
-const markerContent = '<input id="delete-markers" type="button" value="Delete" />';
-// '<form id="new-marker-form" action="/maps" method="post">' +
-// '<label for="marker-name">Title</label>' +
-// '<input type="text" id="marker-name" name="name" value="eg. Best Coffee in Town">' +
-// '<br><label for="marker-description">Description</label><textarea name="description" id="marker-description">' +
-// '</textarea><button type="submit">Submit</button></form>'
-
-const infoWindow = new google.maps.InfoWindow({
-  content: markerContent,
-});
-
-// creates markers when clicked on page
-map.addListener("click", (e) => {
-
-  const marker = new google.maps.Marker({
-    draggable: true,
-    position: e.latLng,
+  let marker = new google.maps.Marker({
+    position: location,
     map: map,
+    draggable: true
   });
 
-// info window show up when clicked on marker
-  marker.addListener("click", (e) => {
-    infoWindow.open({
-      anchor: marker,
-      map,
-      shouldFouces: false,
-    });
+  let lat = marker.getPosition().lat()
+  let lng = marker.getPosition().lng()
+
+  console.log(lat);
+  console.log(lng);
+
+  let contentAdd = `${lat} + ${lng}`;
+
+
+    google.maps.event.addListener(marker, 'click', function(e) {
+      let infoWindow = new google.maps.InfoWindow({
+        content: contentAdd
+      });
+      infoWindow.open(map, marker);
   });
-
-
 
 });
 
