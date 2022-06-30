@@ -51,12 +51,14 @@ const locationsRoutes = require("./routes/locations");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users", usersRoutes(db));
+
 
 // app.use("/api/widgets", widgetsRoutes(db));
 
 app.use('/maps', mapsRoutes(db));
-app.use(locationsRoutes(db));
+app.use('/locations', locationsRoutes(db));
+app.use('/users', usersRoutes(db));
+
 // app.use(commentsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -64,11 +66,31 @@ app.use(locationsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+//Local Host 8080
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render('index', { userID: req.cookies.user_id });
 });
 
+//Login
+app.get("/login/:user_id", (req, res) => {
+  res.cookie('user_id', req.params.user_id);
+  res.redirect('/');
+})
 
+//Logout
+app.post("/logout", (req, res) => {
+  res.clearCookie('user_id')
+  res.redirect('/');
+})
+
+//For future conditional mock route if we wanted to check if they are logged in and redirect accordingly
+// app.get('/profile', (req, res) => {
+// if (req.params.user_id) {
+  // res.render('/profile')
+// } else {
+//   res.redirect('/')
+// }
+// }
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
