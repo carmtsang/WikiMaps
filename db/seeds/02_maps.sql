@@ -12,7 +12,7 @@ INSERT INTO maps (
   VALUES ('Hidden Gems', 'The not so well known tourist attractions', 3);
 INSERT INTO maps (
   name, description, owner_id)
-  VALUES ('Vegan Restaurants', 'No meat allowed', 4);
+  VALUES ('Vegan Restaurants', 'No meat allowed', 1);
 INSERT INTO maps (
   name, description, owner_id)
   VALUES ('Best outdoor patios', 'Grab a nice drink outdoors.', 4);

@@ -6,8 +6,9 @@ module.exports = (db) => {
 
   // renders the individual map
   router.get("/", (req, res) => {
-    const user = req.cookies.user_id;
-    res.render('maps');
+    const userID = req.cookies.user_id;
+    const templateVars = { userID };
+    res.render('maps', templateVars);
 
     // if (!user) {
     //   res.redirect(401, '/maps');
@@ -30,13 +31,12 @@ module.exports = (db) => {
   });
 
 
-  // posting a new map
-  router.post('/', (req, res) => {
-    console.log(req.body)
-    console.log(req.body.name)
-    console.log(req.body.description)
-    res.redirect('/maps')
-  })
+    // posting a new map
+    router.post('/', (req, res) => {
+      console.log(req.body.name)
+      console.log(req.body.description)
+      res.redirect('/maps')
+    })
 
   return router;
 

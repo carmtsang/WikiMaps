@@ -7,4 +7,5 @@ CREATE TABLE locations (
   description TEXT,
   owner_id INTEGER REFERENCES users(id),
   map_id INTEGER REFERENCES maps(id) on DELETE CASCADE
+  url TEXT
 );

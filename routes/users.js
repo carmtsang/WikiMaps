@@ -7,9 +7,8 @@
 
 const express = require('express');
 const router  = express.Router();
-// const cookieParser = require('cookie-parser')
 
-const { getUser, getUserMadeMaps } = require('../user-helpers');
+const { getUser } = require('../user-helpers');
 
 
 module.exports = (db) => {
@@ -19,14 +18,18 @@ module.exports = (db) => {
     const userID = req.cookies.user_id;
 
     getUser(userID, db)
-      .then(userID => {
-        const templateVars = { userID }
+      .then(user => {
+        const templateVars = { userID: user }
         res.render('users', templateVars)
       })
-      .catch(err => console.error(err.stack))
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+      });
+
+
   })
-
-
 
 
 
