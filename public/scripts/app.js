@@ -3,27 +3,33 @@
 
 $(() => {
 
+const renderUserMaps = userMaps => {
+  for (const map of userMaps) {
+    let $post = createUserMaps(map);
+    $('#my-maps').append($post);
+  }
+};
 
 
-  // function to prevent XSS
-  const escape = str => {
-    let div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-  };
+const createUserMaps = userMaps => {
+  return ` <div class="user_map_list">
+  <div class="map-name-description">
+  <a href="/maps/:${userMaps.id}">${userMaps.name}</a>
+  <p>${userMaps.description} </p>
+</div>
+<form action="/maps/:${userMaps.id}/delete" method="post">
+  <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
+</form>
+</div>
+  `
+}
 
-  const addNewMapElement = info => {
-    // const mapName = escape(...);
-    // const description = escape(...);
+const loadUserMaps = () => {
+  $.ajax('/api/user/maps', { method: 'GET' })
+    .then(userMaps => renderUserMaps(userMaps))
+    .catch(error => console.log(error));
+}
 
-    return `<div class="user_map_list">
-      <div class="map-name-description">
-        <a href="/maps/id">${mapName}</a>
-        <p>${description}</p>
-      </div>
-      <form action="/maps/:${id}/:delete" method="post">
-        <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
-      </form>
-      </div>`;
-    };
+loadUserMaps()
+
 });
