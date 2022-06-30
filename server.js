@@ -49,15 +49,19 @@ const usersRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api")
 const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
+const { getUser } = require("./user-helpers");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users", usersRoutes(db));
+
 
 // app.use("/api/widgets", widgetsRoutes(db));
 app.use('/api', apiRoutes(db));
 app.use('/maps', mapsRoutes(db));
-app.use(locationsRoutes(db));
+app.use('/locations', locationsRoutes(db));
+app.use('/users', usersRoutes(db));
+
 // app.use(commentsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
@@ -65,11 +69,39 @@ app.use(locationsRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
+//Local Host 8080
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render('index', { userID: req.cookies.user_id });
 });
 
+//Login
+app.get("/login/:user_id", (req, res) => {
+  const userID = req.params.user_id
+  res.cookie('user_id', req.params.user_id);
 
+  getUser(userID, db)
+  .then(userID => {
+    const templateVars = { userID }
+    res.render('users', templateVars)
+  })
+  .catch(err => console.error(err.stack))
+  // res.redirect('/');
+})
+
+//Logout
+app.post("/logout", (req, res) => {
+  res.clearCookie('user_id')
+  res.redirect('/');
+})
+
+//For future conditional mock route if we wanted to check if they are logged in and redirect accordingly
+// app.get('/profile', (req, res) => {
+// if (req.params.user_id) {
+  // res.render('/profile')
+// } else {
+//   res.redirect('/')
+// }
+// }
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
