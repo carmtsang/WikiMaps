@@ -12,6 +12,7 @@ const app = express();
 const morgan = require("morgan");
 
 
+
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
@@ -28,6 +29,7 @@ app.use(cookieParser());
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 
 app.use(
   "/styles",
