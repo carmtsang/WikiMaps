@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const { selectUserLikes, getUserMadeMaps, getUserContributions } = require('../user-helpers');
+const { selectAllMaps, selectUserLikes, getUserMadeMaps, getUserContributions } = require('../user-helpers');
 
 
 
@@ -20,6 +20,18 @@ module.exports = (db) => {
     });
   })
 
+  router.get('/maps', (req, res) => {
+    const userID = req.cookies.user_id;
+    selectAllMaps(db)
+      .then(maps => res.json(maps))
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
+
+
   // maps created by the user
   router.get('/user/maps', (req, res) => {
     const userID = req.cookies.user_id;
@@ -33,6 +45,7 @@ module.exports = (db) => {
     });
   });
 
+  //api for maps user contributed to
   router.get('/user/add', (req, res) => {
     const userID = req.cookies.user_id;
     getUserContributions(userID, db)
