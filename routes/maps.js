@@ -12,7 +12,7 @@ module.exports = (db) => {
     const user = req.cookies.user_id;
 
     if (!user) {
-      res.redirect(401, '/');
+      res.redirect(401, '/maps');
     } else {
       res.render('maps', { user: req.cookies.user_id });
     }
@@ -32,12 +32,11 @@ module.exports = (db) => {
 
   // posting a new map
   router.post('/', (req, res) => {
-    console.log(req.body)
-    res.redirect('/')
+    let markerInfo = req.body;
+    console.log(markerInfo)
+    res.redirect('/maps')
   })
+
   return router;
 
-
 };
-
-

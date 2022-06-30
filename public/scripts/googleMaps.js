@@ -1,4 +1,7 @@
 // initialzie map onto the page
+let map;
+let markers = [];
+
 function initMap() {
   const metro = { lat:49.278707132806545, lng:-123.11010267860881 };
 
@@ -8,7 +11,7 @@ function initMap() {
 });
 
 
-const markerContent = 'content';
+const markerContent = '<input id="delete-markers" type="button" value="Delete" />';
 // '<form id="new-marker-form" action="/maps" method="post">' +
 // '<label for="marker-name">Title</label>' +
 // '<input type="text" id="marker-name" name="name" value="eg. Best Coffee in Town">' +
@@ -28,7 +31,8 @@ map.addListener("click", (e) => {
     map: map,
   });
 
-  marker.addListener("hover", (e) => {
+// info window show up when clicked on marker
+  marker.addListener("click", (e) => {
     infoWindow.open({
       anchor: marker,
       map,
@@ -36,8 +40,9 @@ map.addListener("click", (e) => {
     });
   });
 
-});
 
+
+});
 
 };
 
