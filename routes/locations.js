@@ -5,7 +5,7 @@ const router  = express.Router();
 
 
 module.exports = (db) => {
-  router.get('/locations', (req, res) => {
+  router.get('/maps', (req, res) => {
     db.query(`SELECT * FROM locations;`)
       .then(data => {
         const locations = data.rows;
@@ -18,18 +18,9 @@ module.exports = (db) => {
       });
   });
 
-  router.post('/locations', (req, res) => {
-    db.query('SELECT * FROM locations;')
-    .then(data => {
-      const locations = data.rows;
-      res.json({ locations });
-    })
-    .catch(err => {
-     res
-      .status(500)
-      .json({ error: err.message });
+  router.post('/maps', (req, res) => {
+    res.render('maps')
     });
-  });
 
   return router;
 };
