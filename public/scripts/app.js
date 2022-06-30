@@ -31,6 +31,7 @@ $(() => {
       .catch(error => console.log(error));
   }
 
+  // user contributed maps
   const renderContribute = userAdd => {
     for (const pin of userAdd) {
       let $post = contribute(pin);

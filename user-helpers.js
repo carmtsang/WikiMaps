@@ -1,12 +1,5 @@
 const users = require("./routes/users");
 
-const selectAllUsers = db => {
-  const query = 'SELECT * FROM users;'
-  return db.query(query)
-  .then((result) => {
-    return result.rows;
-  })
-}
 
 const getUser = (userID, db) => {
   const queryString = `SELECT * FROM users
@@ -16,7 +9,6 @@ const getUser = (userID, db) => {
     .then((res) => {
       return res.rows[0]})
     .catch(err => console.error(err.stack))
-
 }
 
 const selectAllMaps = db => {
@@ -35,8 +27,6 @@ const getUserMadeMaps = (userID, db) => {
       return res.rows})
     .catch(err => console.error(err.stack))
 }
-
-
 
 const getUserContributions = (userID, db) => {
   const queryString = `SELECT maps.*, locations.owner_id
