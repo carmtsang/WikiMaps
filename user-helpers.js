@@ -36,12 +36,14 @@ const getUserMadeMaps = (userID, db) => {
     .catch(err => console.error(err.stack))
 }
 
+
+
 const getUserContributions = (userID, db) => {
-  const queryString = `SELECT maps.name, maps.description, maps.owner_id, locations.owner_id
+  const queryString = `SELECT maps.*, locations.owner_id
   FROM locations JOIN maps on map_id = maps.id
   WHERE maps.owner_id != locations.owner_id
   AND locations.owner_id = $1
-  GROUP BY maps.name, maps.description, maps.owner_id, locations.owner_id`
+  GROUP BY maps.id, locations.owner_id`
   return db
     .query(queryString, [userID])
     .then((res) => {
@@ -62,5 +64,6 @@ module.exports = {
   getUser,
   getUserMadeMaps,
   selectUserLikes,
-  getUserContributions
+  getUserContributions,
+  selectAllMaps
 }
