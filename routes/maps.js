@@ -31,12 +31,12 @@ module.exports = (db) => {
   });
 
 
-  // posting a new map
-  router.post('/', (req, res) => {
-    console.log(req.body.name)
-    console.log(req.body.description)
-    res.redirect('/maps')
-  })
+    // posting a new map
+    router.post('/', (req, res) => {
+      console.log(req.body.name)
+      console.log(req.body.description)
+      res.redirect('/maps')
+    })
 
   return router;
 

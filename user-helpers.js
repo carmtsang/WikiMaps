@@ -36,6 +36,14 @@ const getUserMadeMaps = (userID, db) => {
     .catch(err => console.error(err.stack))
 }
 
+const selectUserLikes = (userID, db) => {
+  const queryString = `SELECT maps.*, likes.* FROM likes
+  JOIN maps ON maps.id = map_id WHERE user_id = $1`
+  return db.query(queryString, [userID])
+    .then((res) => {
+      return res.rows;
+    })
+}
 
 module.exports = {
   getUser,
