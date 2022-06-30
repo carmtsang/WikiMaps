@@ -23,7 +23,7 @@ const selectAllMaps = db => {
   const query = 'SELECT * FROM Maps;'
   return db.query(query)
   .then((result) => {
-    return result.rows[0];
+    return result.rows;
   })
 }
 
@@ -32,7 +32,7 @@ const getUserMadeMaps = (userID, db) => {
   return db
     .query(queryString, [userID])
     .then((res) => {
-      return res.rows[0]})
+      return res.rows})
     .catch(err => console.error(err.stack))
 }
 

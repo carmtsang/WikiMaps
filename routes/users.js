@@ -7,7 +7,6 @@
 
 const express = require('express');
 const router  = express.Router();
-// const cookieParser = require('cookie-parser')
 
 const { getUser } = require('../user-helpers');
 
@@ -17,8 +16,17 @@ module.exports = (db) => {
   // load user home page
   router.get('/', (req, res) => {
     const userID = req.cookies.user_id;
-    const templateVars = { userID }
-    res.render('users', templateVars)
+
+    getUser(userID, db)
+      .then(user => {
+        const templateVars = { userID: user }
+        res.render('users', templateVars)
+      })
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+      });
 
 
   })

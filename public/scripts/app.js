@@ -6,10 +6,10 @@ $(() => {
 
     // add user created maps
   const renderUserMaps = userMaps => {
-    for (const map in userMaps) {
+    for (const map of userMaps) {
       let $post = createUserMaps(map);
-      $('#my-maps').append($post);
-      console.log('in renderUserMaps')
+      $('#my-maps').prepend($post);
+      console.log($post)
     }
   };
 
@@ -28,11 +28,14 @@ $(() => {
 
   const loadUserMaps = () => {
     $.ajax('/api/user/maps', { method: 'GET' })
-      .then(userMaps => renderUserMaps(userMaps))
+      .then(userMaps => {
+        console.log('in loadUserMaps:', userMaps)
+        renderUserMaps(userMaps)
+      })
       .catch(error => console.log(error));
   }
 
-  loadUserMaps()
+
 
   // add user likes
   renderUserLikes = userLikes => {

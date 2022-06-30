@@ -2,7 +2,7 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const { getUserMadeMaps } = require('../user-helpers');
+const { getUsers, getUserMadeMaps } = require('../user-helpers');
 
 
 const selectUserLikes = (userID, db) => {
@@ -10,11 +10,12 @@ const selectUserLikes = (userID, db) => {
   JOIN maps ON maps.id = map_id WHERE user_id = $1`
   return db.query(queryString, [userID])
     .then((res) => {
-      return res.rows[0];
+      return res.rows;
     })
 }
 
 module.exports = (db) => {
+
 
   router.get('/user/likes', (req, res) => {
     const userID = req.cookies.user_id;
@@ -35,6 +36,7 @@ module.exports = (db) => {
 
     getUserMadeMaps(userID, db)
       .then(userMaps => {
+        console.log(userMaps)
         res.json(userMaps)
       })
       .catch(err => {
