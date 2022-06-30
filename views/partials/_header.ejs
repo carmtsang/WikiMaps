@@ -6,12 +6,12 @@
     </div>
     <div class="nav-links">
 <% if (userID) { %>
-        <a href="/maps">My Maps</a>
+        <a href="/users">My Maps</a>
         <form action="/logout" method="POST">
           <button type="submit">log out</button>
         </form>
         <% } else { %>
-            <a href="/login/123">Login</a>
+            <a href="/login/:user_id">Login</a>
             <a href="/register">Register</a>
         <% } %>
     </div>
