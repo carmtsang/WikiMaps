@@ -40,7 +40,6 @@ section {
 }
 
 .user_map_list{
-
   border-bottom: solid rgb(48, 99, 142, 0.2);
   width: 31rem;
 }
@@ -73,6 +72,16 @@ i {
 
 .fa-heart {
   color: #D1495B;
+}
+
+#new-map-form {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 3rem;
+
+  button {
+    margin-top: 1rem;
+  }
 }
 
 .button-new {

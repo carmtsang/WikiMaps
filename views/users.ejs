@@ -34,49 +34,43 @@
     <div id="profile-pic">
       <img src="/images/wikimaps_logo.png">
     </div>
-    <h1><%- userID.name %></h1>
+    <h1 id="username"> <%- userID.name %> </h1>
   </header>
 
   <main class="container">
 
 
-    <section>
-      <h2>Create a Map</h2>
+    <section id="new-map">
+      <div class="section_head">
+        <h2>Create a Map</h2>
+        <i class="fa-solid fa-location-crosshairs"></i>
+      </div>
       <form id="new-map-form" action="/maps" class="form" method="POST">
         <label for="map-name">Map Name</label>
         <input type="text" id="map-name" name="name" value="eg. Best Coffee in Town"><br>
         <label for="map-description">What are you bookmarking?</label>
         <textarea name="description" id="map-description"></textarea>
-        <button class="button-new"type="submit"><i class="fa-solid fa-location-dot"></i>Create a new Map <i class="fa-solid fa-map"></i></button>
+        <button class="button-new"type="submit">Create a new Map </button>
       </form>
-
     </section>
 
     <section>
     <div id="profile_items">
       <div class="profile-column">
-        <section id="my-maps">
+        <section>
           <div class="section_head">
             <h2>My Maps</h2>
             <i class="fa-solid fa-map-pin"></i>
           </div>
-
-
-
-
+          <div id="my-maps"></div>
           </section>
-          <section id="my-contributions">
+
+          <section>
             <div class="section_head">
               <h2>My Contributions </h2>
               <i class="fa-solid fa-map-location-dot"></i>
             </div>
-            <div class="user_map_list map-name-description">
-              <a href="/maps/id">Exotic House Plants</a>
-              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
-            </div>
-            <div class="user_map_list map-name-description">
-              <a href="/maps/id">Best Coffee Shops</a>
-              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
+            <div id="my-contributions">
             </div>
           </section>
         </div>
@@ -87,41 +81,10 @@
             <h2>Favourite Maps</h2>
             <i class="fa-solid fa-location-pin-lock"></i>
           </div>
-          <div class="user_map_list">
-            <div class="map-name-description">
-              <a href="#">Random liked map 1</a>
-              <p>description of map</p>
-            </div>
-            <form action="/likes/:delete" method="post">
-              <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
-            </form>
-
-          </div>
-          <div class="user_map_list">
-            <div class="map-name-description">
-              <a href="#">Random liked Map 2</a>
-              <p>description of map</p>
-            </div>
-            <form action="/likes/:delete" method="post">
-              <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
-            </form>
-
-          </div>
-          <div class="user_map_list">
-            <div class="map-name-description">
-              <a href="#">Random liked Map 3</a>
-              <p>description of map blah blah blah blah. description of map blah blah blah blah  </p>
-            </div>
-            <form action="/likes/:delete" method="post">
-              <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
-            </form>
-          </div>
+          <div id="my-likes"></div>
         </section>
       </div>
     </div>
-
-
-
 
   </main>
 
