@@ -6,8 +6,9 @@ module.exports = (db) => {
 
   // renders the individual map
   router.get("/", (req, res) => {
-    const user = req.cookies.user_id;
-    res.render('maps');
+    const userID = req.cookies.user_id;
+    const templateVars = { userID };
+    res.render('maps', templateVars);
 
     // if (!user) {
     //   res.redirect(401, '/maps');
