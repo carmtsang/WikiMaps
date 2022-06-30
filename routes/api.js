@@ -5,8 +5,9 @@ const cookieParser = require('cookie-parser')
 const { getUserMadeMaps } = require('../user-helpers');
 
 
-const selectUserFav = (userID, db) => {
-  const queryString = `SELECT * FROM favourites WHERE user_id = $1`
+const selectUserLikes = (userID, db) => {
+  const queryString = `SELECT maps.*, likes.* FROM likes
+  JOIN maps ON maps.id = map_id WHERE user_id = $1`
   return db.query(queryString, [userID])
     .then((res) => {
       return res.rows[0];
@@ -15,11 +16,11 @@ const selectUserFav = (userID, db) => {
 
 module.exports = (db) => {
 
-  router.get('/user/favourites', (req, res) => {
+  router.get('/user/likes', (req, res) => {
     const userID = req.cookies.user_id;
-    selectUserFav(userID, db)
-    .then(userFave => {
-      res.json(userFave)
+    selectUserLikes(userID, db)
+    .then(userLikes => {
+      res.json(userLikes)
     })
     .catch(err => {
     res
@@ -37,7 +38,7 @@ module.exports = (db) => {
         res.json(userMaps)
       })
       .catch(err => {
-      res
+        res
         .status(500)
         .json({ error: err.message });
     });
