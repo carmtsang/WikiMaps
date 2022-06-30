@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <title>Wiki Maps</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- External Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/user-home.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/maps.css" type="text/css" />
+
+
+  <!-- icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javscript" src="/scripts/composer-char-counter.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Load GoogleMaps -->
+  <script src="/scripts/googleMaps.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3VVjstTSmOQk2nT4OFnPc2h12sHn7Puo&callback=initMap&v=weekly" defer>
+  </script>
+
+<body>
+  <!-- Top nav bar -->
+  <nav>
+    <div class="navbar">
+      <div class="logo">
+        <a href="/"><img src="/images/wikimaps_logo.png"></a>
+      </div>
+      <div class="nav-links">
+      </div>
+  </nav>
+
+  <main class="container" id="map-container">
+    <section id="create-new-map">
+      <div class="section_head">
+        <h2>Map name</h2>
+      </div>
+      <div id="create-map-body">
+        <div id="map">
+        </div>
+      </div>
+      <div id="map-description">
+      </div>
+    </section>
+  </main>
+
+  </html>
+
+</body>
+
+</html>
