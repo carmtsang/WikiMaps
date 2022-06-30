@@ -30,7 +30,7 @@ module.exports = (db) => {
   // posting a new map
   router.post('/', (req, res) => {
     console.log(req.body)
-    res.redirect('/')
+    res.redirect('users')
   })
   return router;
 
