@@ -6,6 +6,6 @@ CREATE TABLE locations (
   name VARCHAR(255) NOT NULL,
   description TEXT,
   owner_id INTEGER REFERENCES users(id),
-  map_id INTEGER REFERENCES maps(id) on DELETE CASCADE
+  map_id INTEGER REFERENCES maps(id) on DELETE CASCADE,
   url TEXT
 );

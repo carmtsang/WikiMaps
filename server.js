@@ -49,6 +49,7 @@ const usersRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api")
 const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
+const newMapsRoutes = require("./routes/newMaps");
 const { getUser } = require("./user-helpers");
 
 
@@ -59,8 +60,10 @@ const { getUser } = require("./user-helpers");
 // app.use("/api/widgets", widgetsRoutes(db));
 app.use('/api', apiRoutes(db));
 app.use('/maps', mapsRoutes(db));
+app.use('/newMaps', newMapsRoutes(db));
 app.use('/locations', locationsRoutes(db));
 app.use('/users', usersRoutes(db));
+
 
 // app.use(commentsRoutes(db));
 // Note: mount other resources here, using the same pattern above
@@ -89,6 +92,11 @@ app.post("/logout", (req, res) => {
 app.get("/logout", (req, res) => {
   res.clearCookie('user_id')
   res.redirect('/');
+})
+
+// for markers
+app.get("/maps", (req,res) => {
+  res.render("/maps");
 })
 
 //For future conditional mock route if we wanted to check if they are logged in and redirect accordingly

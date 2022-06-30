@@ -31,7 +31,7 @@
   <!-- JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/marker.js"></script>
+  <script type="text/javscript" src="/scripts/composer-char-counter.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- Load GoogleMaps -->
@@ -40,8 +40,15 @@
   </script>
 
 <body>
-
-  <%- include('partials/_header') %>
+  <!-- Top nav bar -->
+  <nav>
+    <div class="navbar">
+      <div class="logo">
+        <a href="/"><img src="/images/wikimaps_logo.png"></a>
+      </div>
+      <div class="nav-links">
+      </div>
+  </nav>
 
   <main class="container" id="map-container">
     <section id="create-new-map">
@@ -57,22 +64,7 @@
     </section>
   </main>
 
-  <section id="marker-form">
-    <div>
-      <form id="new-marker-form" action="/maps" method="post">
-        <label for="marker-name">Marker Title</label>
-        <input type="text" id="marker-name" name="name" value="eg. Best Coffee in Town"><br>
-        <label for="marker-description">Description</label>
-        <textarea name="description" id="map-description"></textarea><br>
-        <label for="marker-image">Image URL</label>
-        <input type="url" id="image"  value="Enter image URL Here"><br>
-        <button class="button-marker"type="submit">Submit</button>
-      </form>
-    </div>
-  </section>
-
-
-</html>
+  </html>
 
 </body>
 
