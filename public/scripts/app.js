@@ -21,7 +21,7 @@ const createUserMaps = userMaps => {
   <a href="/maps/${userMaps.id}">${userMaps.name}</a>
   <p>${userMaps.description} </p>
   </div>
-  <form action="/maps/:${userMaps.id}/delete" method="post">
+  <form action="/maps/${userMaps.id}/delete" method="post">
     <button class="button" type="submit"><i class="fa-solid fa-trash-can"></i></button>
   </form>
   </div>

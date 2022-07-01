@@ -37,6 +37,7 @@ section {
 .section_head, .user_map_list {
   display: flex;
   justify-content: space-between;
+  min-width: 31rem;
 }
 
 .user_map_list{
