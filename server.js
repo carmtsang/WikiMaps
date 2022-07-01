@@ -114,14 +114,6 @@ app.get("/maps", (req,res) => {
   res.render("/maps");
 })
 
-//For future conditional mock route if we wanted to check if they are logged in and redirect accordingly
-// app.get('/profile', (req, res) => {
-// if (req.params.user_id) {
-  // res.render('/profile')
-// } else {
-//   res.redirect('/')
-// }
-// }
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
