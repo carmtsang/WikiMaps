@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 
 const {  getUser, selectUserLikes, getUserContributions } = require('../user-helpers');
 const {  getMapById, addMap, selectAllMaps, getUserMadeMaps } = require('../maps-helper');
-const { addMarker } = require('../marker-helper');
+const { addMarker, getMarkersByMap } = require('../marker-helper');
 
 module.exports = (db) => {
 
@@ -20,6 +20,7 @@ module.exports = (db) => {
     });
   })
 
+  // get all maps
   router.get('/maps', (req, res) => {
     const userID = req.cookies.user_id;
     selectAllMaps(db)
@@ -31,6 +32,20 @@ module.exports = (db) => {
     });
   });
 
+
+
+
+  // get all markers
+  router.get('/all_markers/:map_id', (req, res) => {
+    const mapID = req.params.map_id
+    getMarkersByMap(mapID, db)
+      .then(pins => res.json(pins))
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+    });
+  })
 
   // maps created by the user
   router.get('/user/maps', (req, res) => {

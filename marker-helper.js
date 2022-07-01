@@ -20,11 +20,10 @@ const addMarker = (userID, locations, db) => {
     });
 }
 
-const getMarkers = () => {
-  return db.query(`SELECT * FROM locations`)
-    .then((res) => {
-      return res.rows
-    });
+const getMarkersByMap = (map_id,db) => {
+  return db.query(`SELECT * FROM locations WHERE map_id = $1`, [map_id])
+    .then(res => res.rows)
+    .catch((err) => console.error(err.stack));
 }
 
 const getMarker = (id) => {
@@ -70,7 +69,7 @@ const editMarker = (marker) => {
 }
 
 module.exports = {
-  getMarkers,
+  getMarkersByMap,
   getMarker,
   addMarker,
   editMarker,
