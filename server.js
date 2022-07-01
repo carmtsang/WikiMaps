@@ -82,7 +82,6 @@ app.get("/", (req, res) => {
       maps,
       userID: req.cookies.user_id
     }
-    console.log("templatevars", templateVars);
     res.render('index', templateVars);
   })
   .catch(err => {
