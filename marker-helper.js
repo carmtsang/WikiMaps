@@ -85,4 +85,5 @@ module.exports = {
   addMarker,
   editMarker,
   deleteMarker,
+  getMarkers
 }

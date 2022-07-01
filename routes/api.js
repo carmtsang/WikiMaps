@@ -8,10 +8,6 @@ const { addMarker, getMarkers, getMarkersByMap } = require('../marker-helper');
 
 module.exports = (db) => {
 
-  // const getAllCoords =() {
-  //   let url = "/api/markers/"
-  // }
-
 // list of maps liked by user
   router.get('/user/likes', (req, res) => {
     const userID = req.cookies.user_id;
