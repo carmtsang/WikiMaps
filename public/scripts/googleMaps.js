@@ -28,16 +28,18 @@ google.maps.event.addListener(map, 'click', function(e) {
   //adds the lat and lng into the array
   allMarkers.push(markerPosition);
 
-  console.log(allMarkers)
+  console.log("these are the markers", allMarkers);
+
+  const infoWindowContent = (name, description, logitude, latitude, url) => {
+    return ` ${name}, ${description}, ${longitude}, ${latitude}, ${url}`;
+  }
 
   // content that is on the infowindow
-  let contentAdd = `title: ` + `description: ` + `lat: ${lat} + lng: ${lng}`;
-
 
   // adds the info window on the marker
     google.maps.event.addListener(marker, 'click', function(e) {
       let infoWindow = new google.maps.InfoWindow({
-        content: contentAdd
+        content: infoWindowContent
       });
       infoWindow.open(map, marker);
   });

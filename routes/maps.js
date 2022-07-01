@@ -1,6 +1,8 @@
 const express = require('express');
+const { getMarkers } = require('../maps-helper');
 const router  = express.Router();
 const { addMap, getUser, getMapById } = require('../user-helpers');
+const locations = require('./locations');
 
 
 module.exports = (db) => {
@@ -17,6 +19,7 @@ module.exports = (db) => {
       })
 
   });
+
 
     // posting a new map
     router.post('/', (req, res) => {

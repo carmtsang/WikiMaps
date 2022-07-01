@@ -1,10 +1,12 @@
 const { Pool } = require('pg');
 
-const getMarkers = () => {
-  return db.query(`SELECT * FROM locations`)
+const getMarkers = (userID, db) => {
+  const queryString = `SELECT * FROM locations where owner_id = $1`
+  return db
+    .query(queryString, [userID])
     .then((res) => {
-      return res.rows
-    });
+      return res.rows})
+    .catch(err => console.error(err.stack));
 }
 
 const getMarker = (id) => {
