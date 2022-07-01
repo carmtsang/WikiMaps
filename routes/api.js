@@ -2,11 +2,9 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const { selectAllMaps, selectUserLikes, getUserMadeMaps, getUserContributions } = require('../user-helpers');
-
-const { addMarker } = require('../maps-helper');
-
-
+const {  getUser, selectUserLikes, getUserContributions } = require('../user-helpers');
+const {  getMapById, addMap, selectAllMaps, getUserMadeMaps } = require('../maps-helper');
+const { addMarker } = require('../marker-helper');
 
 module.exports = (db) => {
 

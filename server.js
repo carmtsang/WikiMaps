@@ -51,7 +51,7 @@ const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
 const newMapsRoutes = require("./routes/newMaps");
 const { getUser } = require("./user-helpers");
-const { selectAllMaps } = require("./user-helpers");
+const { selectAllMaps } = require("./maps-helper");
 
 
 // Mount all resource routes
