@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { addMap, getMapById } = require('../user-helpers');
+const { addMap, getMapById } = require('../maps-helper');
 
 
 module.exports = (db) => {
