@@ -75,6 +75,10 @@ i {
   color: #D1495B;
 }
 
+.fa-heart:hover, .fa-trash-can:hover {
+  font-size: 30px;
+}
+
 #new-map-form {
   display: flex;
   flex-direction: column;
