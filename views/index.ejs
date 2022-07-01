@@ -35,7 +35,11 @@
   <h2>Available maps</h2>
 
 <p>
-
+  <% for (let map of maps) { %>
+    <p>
+      <%= map.name %> <%= map.description %>
+    </p>
+  <% } %>
 </p>
 
 </body>
