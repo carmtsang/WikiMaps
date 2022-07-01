@@ -1,6 +1,5 @@
 const users = require("./routes/users");
 
-
 const getUser = (userID, db) => {
   const queryString = `SELECT * FROM users
   WHERE id = $1;`;
@@ -17,12 +16,11 @@ const getMapById = (map_id, db) => {
     .catch(err => console.log(err.message))
 }
 
-
 const selectAllMaps = db => {
-  const query = 'SELECT * FROM Maps;';
+  const query = 'SELECT * FROM maps;'
   return db.query(query)
-    .then(res => res.rows)
-    .catch(err => console.log(err.message));
+  .then(res =>  res.rows)
+  .catch(err => console.log(err.message));
 }
 
 const getUserMadeMaps = (userID, db) => {

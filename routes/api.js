@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser')
 
 const { selectAllMaps, selectUserLikes, getUserMadeMaps, getUserContributions } = require('../user-helpers');
 
+const { addMarker } = require('../maps-helper');
+
 
 
 module.exports = (db) => {
