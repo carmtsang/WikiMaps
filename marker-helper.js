@@ -1,3 +1,5 @@
+
+
 const addMarker = (userID, locations, db) => {
   const queryString = `INSERT INTO locations (owner_id, map_id, longitude, latitude, name, description, url)
    VALUES ($1, $2, $3, $4, $5, $6, $7)
@@ -20,18 +22,27 @@ const addMarker = (userID, locations, db) => {
     });
 }
 
-const getMarkersByMap = (map_id,db) => {
+const getMarkersByMap = (map_id, db) => {
   return db.query(`SELECT * FROM locations WHERE map_id = $1`, [map_id])
     .then(res => res.rows)
     .catch((err) => console.error(err.stack));
 }
 
-const getMarker = (id) => {
+const getMarker = (id, db) => {
   return db.query(`SELECT * FROM locations WHERE locations.id = $1`, [id])
     .then((res) => {
       return res.rows[0];
     });
 }
+
+const getMarkers = (db) => {
+  return db.query(`SELECT * FROM locations`)
+    .then((res) => {
+      console.log("+++++", res.rows)
+      return res.rows;
+    });
+}
+
 
 const deleteMarker = (mapID, locationsID) => {
   const queryString = `DELETE FROM locations WHERE map_id = $1 AND id = $2`;
@@ -73,5 +84,5 @@ module.exports = {
   getMarker,
   addMarker,
   editMarker,
-  deleteMarker
+  deleteMarker,
 }

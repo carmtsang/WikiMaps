@@ -12,6 +12,7 @@ module.exports = (db) => {
     const map_id = req.params.map_id;
     getMapById(map_id, db)
       .then(map => {
+        console.log("@@@@@@", map, map_id);
         const templateVars = { userID, map };
         res.render('maps', templateVars);
       })

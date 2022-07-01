@@ -6,6 +6,13 @@ const getMapById = (map_id, db) => {
     .catch(err => console.log(err.message))
 }
 
+const getCoordsById = (map_id, db) => {
+  const queryString = `SELECT maps.*, locations.* FROM maps JOIN locations ON locations.map_id = maps.id WHERE maps.id = $1;`;
+  return db.query(queryString, [map_id])
+    .then(res => res.rows)
+    .catch(err => console.log(err.message))
+}
+
 const addMap = (userID, map, db) => {
   const queryString = `INSERT INTO maps (
     name, description, owner_id)
@@ -37,5 +44,6 @@ module.exports = {
   getMapById,
   addMap,
   selectAllMaps,
-  getUserMadeMaps
+  getUserMadeMaps,
+  getCoordsById
 }

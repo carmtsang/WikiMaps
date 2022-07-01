@@ -4,9 +4,13 @@ const cookieParser = require('cookie-parser')
 
 const {  getUser, selectUserLikes, getUserContributions } = require('../user-helpers');
 const {  getMapById, addMap, selectAllMaps, getUserMadeMaps } = require('../maps-helper');
-const { addMarker, getMarkersByMap } = require('../marker-helper');
+const { addMarker, getMarkers, getMarkersByMap } = require('../marker-helper');
 
 module.exports = (db) => {
+
+  // const getAllCoords =() {
+  //   let url = "/api/markers/"
+  // }
 
 // list of maps liked by user
   router.get('/user/likes', (req, res) => {
@@ -32,6 +36,17 @@ module.exports = (db) => {
     });
   });
 
+  // gets all the map information
+  router.get('/locations', (req, res) => {
+    const userID = req.cookies.user_id;
+    getMarkers(db)
+      .then(maps => res.json(maps))
+      .catch(err => {
+        res
+        .status(500)
+        .json({ error: err.message });
+    });
+  });
 
 
 
