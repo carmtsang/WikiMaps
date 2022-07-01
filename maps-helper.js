@@ -25,17 +25,24 @@ const selectAllMaps = db => {
 
 const getUserMadeMaps = (userID, db) => {
   const queryString = `SELECT * FROM maps WHERE owner_id = $1`;
-  return db
-    .query(queryString, [userID])
+  return db.query(queryString, [userID])
     .then((res) => {
       return res.rows})
     .catch(err => console.log(err.message));
 };
 
+  const deleteMap = (mapId, db) => {
+    const queryString = `DELETE FROM maps WHERE id = $1`;
+    return db.query(queryString, [mapId])
+      .then((res) => {
+        return res.rows})
+      .catch(err => console.log(err.message));
+  }
 
 module.exports = {
   getMapById,
   addMap,
   selectAllMaps,
-  getUserMadeMaps
+  getUserMadeMaps,
+  deleteMap
 }
