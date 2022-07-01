@@ -50,10 +50,26 @@ const selectUserLikes = (userID, db) => {
     })
 }
 
+const addMap = (userID, map, db) => {
+  const queryString = `INSERT INTO maps (
+    name, description, owner_id)
+    VALUES ($1, $2, $3) RETURNING *;`
+
+  return db.query(queryString, [map.name, map.description, userID])
+    .then(res => {
+      console.log(res.rows);
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+}
+
+
 module.exports = {
   getUser,
   getUserMadeMaps,
   selectUserLikes,
   getUserContributions,
-  selectAllMaps
+  selectAllMaps,
+  addMap
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const router  = express.Router();
+const { addMap, getUser } = require('../user-helpers');
 
 
 module.exports = (db) => {
@@ -9,13 +10,6 @@ module.exports = (db) => {
     const userID = req.cookies.user_id;
     const templateVars = { userID };
     res.render('maps', templateVars);
-
-    // if (!user) {
-    //   res.redirect(401, '/maps');
-    // } else {
-    //   res.render('maps', { user: req.cookies.user_id });
-    // }
-
     // db.query(`SELECT * FROM maps;`)
     //   .then(data => {
     //     const users = data.rows;
@@ -26,15 +20,20 @@ module.exports = (db) => {
     //       .status(500)
     //       .json({ error: err.message });
     //   });
-
-
   });
 
 
     // posting a new map
     router.post('/', (req, res) => {
-      console.log(req.body.name)
-      console.log(req.body.description)
+      const userID = req.cookies.user_id;
+      const map = req.body
+
+      addMap(userID, map, db)
+        .then(res => {
+          console.log('inside addMap:', res)
+        })
+      console.log(req.body)
+
       res.redirect('/maps')
     })
 
