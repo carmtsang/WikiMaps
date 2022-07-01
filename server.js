@@ -51,6 +51,7 @@ const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
 const newMapsRoutes = require("./routes/newMaps");
 const { getUser } = require("./user-helpers");
+const { selectAllMaps } = require("./user-helpers");
 
 
 // Mount all resource routes
@@ -74,7 +75,21 @@ app.use('/users', usersRoutes(db));
 
 //Local Host 8080
 app.get("/", (req, res) => {
-  res.render('index', { userID: req.cookies.user_id });
+
+  selectAllMaps(db)
+  .then((maps) => {
+    const templateVars = {
+      maps,
+      userID: req.cookies.user_id
+    }
+    console.log("templatevars", templateVars);
+    res.render('index', templateVars);
+  })
+  .catch(err => {
+    console.log("this is an error", err);
+    res.render('index', { userID: req.cookies.user_id } )
+  });
+
 });
 
 //Login
