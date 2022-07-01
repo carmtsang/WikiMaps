@@ -1,15 +1,21 @@
 const express = require('express');
 const router  = express.Router();
-const { addMap, getUser } = require('../user-helpers');
+const { addMap, getUser, getMapById } = require('../user-helpers');
 
 
 module.exports = (db) => {
 
   // renders the individual map
-  router.get("/", (req, res) => {
+  router.get("/:map_id", (req, res) => {
     const userID = req.cookies.user_id;
-    const templateVars = { userID };
-    res.render('maps', templateVars);
+    const map_id = req.params.map_id
+    console.log(req.params)
+    getMapById(map_id, db)
+      .then(map => {
+        const templateVars = { userID, map };
+        res.render('maps', templateVars);
+      })
+
     // db.query(`SELECT * FROM maps;`)
     //   .then(data => {
     //     const users = data.rows;
@@ -29,12 +35,9 @@ module.exports = (db) => {
       const map = req.body
 
       addMap(userID, map, db)
-        .then(res => {
-          console.log('inside addMap:', res)
-        })
-      console.log(req.body)
+        .then(res => res.rows)
 
-      res.redirect('/maps')
+      res.redirect('users')
     })
 
   return router;
