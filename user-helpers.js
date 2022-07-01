@@ -11,6 +11,17 @@ const getUser = (userID, db) => {
     .catch(err => console.error(err.stack))
 }
 
+const getMapById = (map_id, db) => {
+  const queryString = `SELECT * FROM maps
+  WHERE id = $1;`
+  return db
+    .query(queryString, [map_id])
+    .then((res) => {
+      return res.rows[0]})
+    .catch(err => console.error(err.stack))
+}
+
+
 const selectAllMaps = db => {
   const query = 'SELECT * FROM Maps;'
   return db.query(query)
@@ -71,5 +82,6 @@ module.exports = {
   selectUserLikes,
   getUserContributions,
   selectAllMaps,
+  getMapById,
   addMap
 }
