@@ -16,18 +16,7 @@ module.exports = (db) => {
         res.render('maps', templateVars);
       })
 
-    // db.query(`SELECT * FROM maps;`)
-    //   .then(data => {
-    //     const users = data.rows;
-    //     res.json({ users });
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
   });
-
 
     // posting a new map
     router.post('/', (req, res) => {
@@ -37,7 +26,7 @@ module.exports = (db) => {
       addMap(userID, map, db)
         .then(res => res.rows)
 
-      res.redirect('users')
+      res.redirect('/maps/1')
     })
 
   return router;

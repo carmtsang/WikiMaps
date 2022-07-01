@@ -42,20 +42,6 @@ google.maps.event.addListener(map, 'click', function(e) {
       infoWindow.open(map, marker);
   });
 
-  // const drawMarker = (point, map) => {
-  //   let markerDot = markerPosition;
-
-  //   let newMarker = new google.maps.Marker({
-  //     markerID: point.id,
-  //     position: markerDot,
-  //     map: map
-  //   });
-  //   return newMarker;
-  // };
-
-  // let newPoint = drawMarker(point, map);
-  // allMarkers.push(newPoint);
-
 });
 
 };
