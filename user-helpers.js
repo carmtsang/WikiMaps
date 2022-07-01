@@ -23,9 +23,10 @@ const getMapById = (map_id, db) => {
 
 
 const selectAllMaps = db => {
-  const query = 'SELECT * FROM Maps;'
+  const query = 'SELECT * FROM maps;'
   return db.query(query)
   .then((result) => {
+    
     return result.rows;
   })
 }
