@@ -9,7 +9,6 @@ module.exports = (db) => {
   router.get("/:map_id", (req, res) => {
     const userID = req.cookies.user_id;
     const map_id = req.params.map_id;
-    console.log(req.params)
     getMapById(map_id, db)
       .then(map => {
         const templateVars = { userID, map };
@@ -21,8 +20,8 @@ module.exports = (db) => {
     // posting a new map
     router.post('/', (req, res) => {
       const userID = req.cookies.user_id;
-      const map = req.body;
-
+        const map = req.body;
+        console.log(map)
       addMap(userID, map, db)
         .then(() => {
           res.redirect('users');

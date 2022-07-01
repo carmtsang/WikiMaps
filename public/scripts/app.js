@@ -77,9 +77,7 @@ $(() => {
       .catch(error => console.log(error));
   }
 
-
   loadUserMaps();
   loadLikes();
   loadContributions();
-
 });
