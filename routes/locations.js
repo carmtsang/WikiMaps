@@ -14,8 +14,6 @@ module.exports = (db) => {
 
 router.post('/', (req, res) => {
   const userID = req.cookies.user_id;
-  const mapID = req.params.map_id;
-  console.log("it is mapID", mapID);
 
   const locations = req.body;
   console.log(locations);
@@ -24,11 +22,11 @@ router.post('/', (req, res) => {
   //       .then(res => res.rows)
 
 
-  // addMarker(userID, mapID, locations, db)
-  //   .then((res) => {
-  //     console.log("res and addmarker", res);
-    // })
-  res.redirect("/");
+  addMarker(userID, locations, db)
+    .then((res) => {
+      console.log("res and addmarker", res);
+    })
+    res.redirect("/");
 })
 
 

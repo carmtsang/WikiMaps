@@ -14,14 +14,29 @@ const getMarker = (id) => {
     });
 }
 
-const addMarker = (userID, mapID, locations, db) => {
-  const queryString = `INSERT INTO locations owner_id, map_id, longitude, latitude, name, description, url)
-   VALUES ($1, $2, $3, $4, $5, $6, $7);
+
+const addMap = (userID, map, db) => {
+  const queryString = `INSERT INTO maps (
+    name, description, owner_id)
+    VALUES ($1, $2, $3) RETURNING *;`
+
+  return db.query(queryString, [map.name, map.description, userID])
+    .then(res => {
+      console.log(res.rows);
+    })
+    .catch(err => {
+      console.log(err.message);
+    });
+}
+
+const addMarker = (userID, locations, db) => {
+  const queryString = `INSERT INTO locations (owner_id, map_id, longitude, latitude, name, description, url)
+   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING *;`
 
     const values = [
       userID,
-      mapID,
+      locations.mapid,
       locations.longitude,
       locations.latitude,
       locations.name,
@@ -73,7 +88,7 @@ const addMarker = (userID, mapID, locations, db) => {
   }
 
 
-  module.export = {
+  module.exports = {
     getMarkers,
     getMarker,
     addMarker,
