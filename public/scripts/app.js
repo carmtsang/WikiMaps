@@ -1,7 +1,5 @@
 // Client facing scripts for user home page
 
-// const { load } = require("dotenv");
-
 $(() => {
 
     // add user created maps
@@ -15,7 +13,7 @@ $(() => {
   const createUserMaps = userMaps => {
     return ` <div class="user_map_list">
     <div class="map-name-description">
-    <a href="/maps/:${userMaps.id}">${userMaps.name}</a>
+    <a href="/maps/${userMaps.id}">${userMaps.name}</a>
     <p>${userMaps.description} </p>
     </div>
     <form action="/maps/:${userMaps.id}/delete" method="post">
@@ -55,12 +53,12 @@ $(() => {
   // add user likes
   const renderUserLikes = userLikes => {
     for (const like of userLikes) {
-      let $post = addLikes(like);
+      let $post = addUserLikes(like);
       $('#my-likes').append($post);
     }
   }
 
-  const addLikes = likes => {
+  const addUserLikes = likes => {
     return `<div class="user_map_list">
     <div class="map-name-description">
       <a href="/maps/${likes.map_id}">${likes.name}</a>
