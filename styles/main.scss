@@ -38,10 +38,15 @@ h1, p {
   padding: 0.2rem 1rem;
 }
 
-.nav-link {
-  color: #EDAE49;
-  text-decoration: none;
+.nav-links {
   padding-right: 1em;
+  a {
+    color: #EDAE49;
+    text-decoration: none;
+    &:hover {
+      color:rgb(236, 247, 249)
+    }
+  }
 }
 
 .logo img {
