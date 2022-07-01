@@ -14,20 +14,23 @@ const getMarker = (id) => {
     });
 }
 
+const getMapById = (map_id, db) => {
+  const queryString = `SELECT * FROM maps
+  WHERE id = $1;`;
+  return db.query(queryString, [map_id])
+    .then(res => res.rows[0])
+    .catch(err => console.log(err.message))
+}
 
 const addMap = (userID, map, db) => {
   const queryString = `INSERT INTO maps (
     name, description, owner_id)
-    VALUES ($1, $2, $3) RETURNING *;`
+    VALUES ($1, $2, $3) RETURNING *;`;
 
   return db.query(queryString, [map.name, map.description, userID])
-    .then(res => {
-      console.log(res.rows);
-    })
-    .catch(err => {
-      console.log(err.message);
-    });
-}
+    .then(res => res.rows)
+    .catch(err => console.log(err.message));
+};
 
 const addMarker = (userID, locations, db) => {
   const queryString = `INSERT INTO locations (owner_id, map_id, longitude, latitude, name, description, url)

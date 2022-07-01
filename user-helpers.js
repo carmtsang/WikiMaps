@@ -1,4 +1,4 @@
-const users = require("./routes/users");
+
 
 const getUser = (userID, db) => {
   const queryString = `SELECT * FROM users
