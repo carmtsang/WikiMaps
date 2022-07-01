@@ -109,10 +109,14 @@ app.get("/logout", (req, res) => {
   res.redirect('/');
 })
 
-// for markers
-app.get("/maps", (req,res) => {
-  res.render("/maps");
-})
+// // for markers
+// app.get("/maps", (req,res) => {
+//   res.render("/maps/1");
+// })
+
+app.post("/maps/:id", (req, res) => {
+  console.log(req.body);
+} )
 
 
 app.listen(PORT, () => {

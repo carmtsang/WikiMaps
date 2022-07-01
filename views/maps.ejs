@@ -61,13 +61,18 @@
   <% if (userID) { %>
     <section id="marker-form">
       <div>
-        <form id="new-marker-form" action="/maps" method="post">
+        <form id="new-marker-form" action="/locations" method="POST">
           <label for="marker-name">Marker Title</label>
           <input type="text" id="marker-name" name="name" value="eg. Best Coffee in Town"><br>
+          <input type="hidden" id="map-id" name="mapid" value="<%- map.id %>">
           <label for="marker-description">Description</label>
           <textarea name="description" id="map-description"></textarea><br>
           <label for="marker-image">Image URL</label>
-          <input type="url" id="image"  value="Enter image URL Here"><br>
+          <input type="url" id="image" name="url"  value="Enter image URL Here"><br>
+          <label for="longitude">Longitude</label>
+          <input type="integer" id="number" name="longitude" value="Enter Longitude Here"><br>
+          <label for="latitude">Latitude</label>
+          <input type="integer" id="number" name="latitude" value="Enter Latitude Here">
           <button class="button-marker"type="submit">Submit</button>
         </form>
       </div>
