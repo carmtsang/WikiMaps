@@ -33,8 +33,6 @@ module.exports = (db) => {
   });
 
 
-
-
   // get all markers
   router.get('/all_markers/:map_id', (req, res) => {
     const mapID = req.params.map_id
