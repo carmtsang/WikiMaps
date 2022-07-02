@@ -47,7 +47,7 @@ const selectUserLikes = (userID, db) => {
   const queryString = `SELECT maps.*, likes.* FROM likes
   JOIN maps ON maps.id = map_id WHERE user_id = $1`;
   return db.query(queryString, [userID])
-    .then(res => res.rows)
+  .then(res => res.rows)
     .catch(err => console.log(err.message))
 };
 
@@ -61,6 +61,16 @@ const addMap = (userID, map, db) => {
     .catch(err => console.log(err.message));
 };
 
+const findHearts = (userID, db) => {
+  const queryString = `SELECT * FROM likes
+  WHERE user_id = $1`;
+  return db.query(queryString, [userID])
+    .then(res => {
+      // console.log(res.rows)
+      return res.rows
+    })
+    .catch(err => console.log(err.message))
+};
 
 module.exports = {
   getUser,
@@ -69,5 +79,6 @@ module.exports = {
   getUserContributions,
   selectAllMaps,
   getMapById,
-  addMap
+  addMap,
+  findHearts
 }
