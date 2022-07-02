@@ -18,12 +18,9 @@ router.post('/', (req, res) => {
   const locations = req.body;
   console.log(locations);
 
-  // addMap(userID, map, db)
-  //       .then(res => res.rows)
-
 
   addMarker(userID, locations, db)
-    res.redirect("/");
+  res.redirect("users");
 })
 
 
