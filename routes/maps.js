@@ -13,6 +13,9 @@ module.exports = (db) => {
     getMapById(map_id, db)
       .then(map => {
         const templateVars = { userID, map };
+        if (!map) {
+          res.redirect('/')
+        };
         res.render('maps', templateVars);
       })
     });

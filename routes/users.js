@@ -15,7 +15,9 @@ module.exports = (db) => {
   // load user home page
   router.get('/', (req, res) => {
     const userID = req.cookies.user_id;
-
+    if (userID === undefined) {
+      res.redirect('/')
+    };
     getUser(userID, db)
       .then(user => {
         const templateVars = { userID: user }

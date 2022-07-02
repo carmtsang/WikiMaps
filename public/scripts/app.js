@@ -1,4 +1,6 @@
 // Client facing scripts for user home page
+const mapId = window.location.pathname.split('/')[2]
+
 $(() => {
   loadUserMaps();
   loadLikes();
@@ -25,18 +27,13 @@ const createUserMaps = userMaps => {
   </form>
   </div>
   `
-}
+};
 
 const loadUserMaps = () => {
   $.ajax('/api/user/maps', { method: 'GET' })
     .then(userMaps => renderUserMaps(userMaps))
     .catch(error => console.log(error));
-}
-
-// const loadMarkers = () => {
-//   $.ajax('/api/locations', { method: 'GET' })
-//     .then(locations => )
-// }
+};
 
 // user contributed maps
 const renderContribute = userAdd => {
@@ -44,7 +41,7 @@ const renderContribute = userAdd => {
     let $post = contribute(pin);
     $('#my-contributions').prepend($post);
   }
-}
+};
 
 const contribute = map => {
   return `<div class="user_map_list map-name-description">
