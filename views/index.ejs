@@ -1,43 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Wiki Maps</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta charset="utf-8" />
 
-<head>
-  <title>Wiki Maps</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
-  <meta charset="utf-8">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/index.css" type="text/css" />
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
 
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- JS -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
 
+  <body>
+    <%- include('partials/_header') %>
 
-  <!-- JS -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+    <h1>Welcome to Wiki Maps</h1>
 
-</head>
+    <p>
+      Wiki Maps allows you to bookmark your favourite locations, create maps
+      with different saved pins and view other user's saved maps
+    </p>
 
-<body>
-  <%- include('partials/_header') %>
+    <h2>Available maps</h2>
 
-  <h1>Welcome to Wiki Maps</h1>
+    <h2 class="table-title">
+      <p class="name">
+        Name
+      </p>
+      <p class="description">
+        Description
+      </p>
+    </h2>
 
-  <p>Wiki Maps allows you to bookmark your favourite locations, create maps with different saved pins and view other user's saved maps </p>
-
-
-  <h2>Available maps</h2>
-
-<p>
-
-</p>
-
-</body>
-
+    <div class="all-maps">
+      <% for (let map of maps) { %>
+      <p class="map-name"><%= map.name %></p>
+      <p class="map-description"><%= map.description %></p>
+      <p class="likes" data-maps-id="<%= map.id %>">
+        <i class="fa-solid fa-heart"></i>
+      </p>
+      <% } %>
+    </div>
+    <hr>
+  </body>
 </html>

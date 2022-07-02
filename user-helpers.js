@@ -6,7 +6,6 @@ const getUser = (userID, db) => {
     .catch(err => console.log(err.message))
 }
 
-
 const getUserContributions = (userID, db) => {
   const queryString = `SELECT maps.*, locations.owner_id
   FROM locations JOIN maps on map_id = maps.id
@@ -22,13 +21,35 @@ const selectUserLikes = (userID, db) => {
   const queryString = `SELECT maps.*, likes.* FROM likes
   JOIN maps ON maps.id = map_id WHERE user_id = $1`;
   return db.query(queryString, [userID])
-    .then(res => res.rows)
+  .then(res => res.rows)
     .catch(err => console.log(err.message))
 };
 
+const addMap = (userID, map, db) => {
+  const queryString = `INSERT INTO maps (
+    name, description, owner_id)
+    VALUES ($1, $2, $3) RETURNING *;`;
+
+  return db.query(queryString, [map.name, map.description, userID])
+    .then(res => res.rows)
+    .catch(err => console.log(err.message));
+};
+
+const findHearts = (userID, db) => {
+  const queryString = `SELECT * FROM likes
+  WHERE user_id = $1`;
+  return db.query(queryString, [userID])
+    .then(res => {
+      // console.log(res.rows)
+      return res.rows
+    })
+    .catch(err => console.log(err.message))
+};
 
 module.exports = {
   getUser,
   selectUserLikes,
-  getUserContributions
+  getUserContributions,
+  addMap,
+  findHearts
 }

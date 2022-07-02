@@ -1,13 +1,12 @@
 // Client facing scripts for user home page
-
 $(() => {
-
   loadUserMaps();
   loadLikes();
   loadContributions();
+  homePageLikes();
 });
 
- // add user created maps
+// add user created maps
 const renderUserMaps = userMaps => {
   for (const map of userMaps) {
     let $post = createUserMaps(map);
@@ -84,5 +83,16 @@ const addUserLikes = likes => {
 const loadLikes = () => {
   $.ajax('/api/user/likes', { method: 'GET' })
     .then(userLikes => renderUserLikes(userLikes))
+    .catch(error => console.log(error));
+}
+
+//index page likes
+const homePageLikes = () => {
+  $.ajax('/favourites', { method: 'GET' })
+    .then(userLikes => {
+      for (let like of userLikes) {
+        $(`p[data-maps-id='${like.map_id}']`).find('i').css({ color: "red" })
+      }
+    })
     .catch(error => console.log(error));
 }
