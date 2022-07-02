@@ -1,6 +1,8 @@
 const express = require('express');
+const { database } = require('pg/lib/defaults');
 const router  = express.Router();
-const { getMarkers, getMarker, addMarker, editMarker, deleteMarker } = require('../marker-helper');
+const { getMarkers, getMarker, editMarker, deleteMarker } = require('../maps-helper');
+const { addMarker } = require('../marker-helper');
 
 
 // this will go on individual map page
@@ -9,7 +11,12 @@ const { getMarkers, getMarker, addMarker, editMarker, deleteMarker } = require('
 module.exports = (db) => {
 
   router.get("/locations", (req, res) => {
-    res.render("locations")
+    db.query(`SELECT * FROM locations`)
+      .then(data => {
+        const markers = data.rows;
+        res.json({ markers });
+      })
+    res.render("/")
 });
 
 router.post('/', (req, res) => {
@@ -26,3 +33,4 @@ router.post('/', (req, res) => {
 
 return router;
 };
+

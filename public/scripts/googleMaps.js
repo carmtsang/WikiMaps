@@ -1,4 +1,3 @@
-
 // initialzie map onto the page
 function initMap() {
   const metro = { lat: 49.278707132806545, lng:-123.11010267860881 };
@@ -57,7 +56,7 @@ function initMap() {
     console.log(allMarkers)
 
     // content that is on the infowindow
-    let contentAdd = `title: ` + `description: ` + `lat: ${lat} + lng: ${lng}`;
+    let contentAdd = `title: ${code}, description: ${code}, lat: ${lat}, lng: ${lng}`;
 
 
     // adds the info window on the marker
@@ -73,3 +72,5 @@ function initMap() {
 };
 
 window.initMap = initMap;
+
+

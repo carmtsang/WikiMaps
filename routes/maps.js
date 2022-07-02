@@ -1,4 +1,5 @@
 const express = require('express');
+const { getMarkers } = require('../marker-helper');
 const router  = express.Router();
 const { addMap, getMapById, deleteMap } = require('../maps-helper');
 
@@ -11,11 +12,11 @@ module.exports = (db) => {
     const map_id = req.params.map_id;
     getMapById(map_id, db)
       .then(map => {
+        console.log("@@@@@@", map, map_id);
         const templateVars = { userID, map };
         res.render('maps', templateVars);
       })
   });
-
 
     // posting a new map
     router.post('/', (req, res) => {
