@@ -47,15 +47,14 @@ const usersRoutes = require("./routes/users");
 const apiRoutes = require("./routes/api")
 const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
-const newMapsRoutes = require("./routes/newMaps");
-const { selectAllMaps } = require("./maps-helper");
+
+const { selectAllMaps } = require("./map-helpers");
 const { findHearts } = require("./user-helpers");
 
 
 // Mount all resource routes
 app.use('/api', apiRoutes(db));
 app.use('/maps', mapsRoutes(db));
-app.use('/newMaps', newMapsRoutes(db));
 app.use('/locations', locationsRoutes(db));
 app.use('/users', usersRoutes(db));
 

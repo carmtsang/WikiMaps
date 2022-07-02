@@ -2,8 +2,8 @@ const express = require('express');
 const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
-const {  getUser, selectUserLikes, getUserContributions } = require('../user-helpers');
-const { selectAllMaps, getUserMadeMaps, getCoordsById } = require('../maps-helper');
+const { selectUserLikes, getUserContributions } = require('../user-helpers');
+const { selectAllMaps, getUserMadeMaps } = require('../map-helpers');
 const { getMarkers, getMarkersByMap, getMarker } = require('../marker-helper');
 
 module.exports = (db) => {
@@ -14,7 +14,7 @@ module.exports = (db) => {
     selectUserLikes(userID, db)
     .then(userLikes => res.json(userLikes))
     .catch(err => {
-    res
+      res
       .status(500)
       .json({ error: err.message });
     });
