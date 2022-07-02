@@ -51,7 +51,7 @@ const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
 const newMapsRoutes = require("./routes/newMaps");
 const { getUser } = require("./user-helpers");
-const { selectAllMaps } = require("./user-helpers");
+const { selectAllMaps, findHearts } = require("./user-helpers");
 
 
 // Mount all resource routes
@@ -87,6 +87,20 @@ app.get("/", (req, res) => {
   .catch(err => {
     console.log("this is an error", err);
     res.render('index', { userID: req.cookies.user_id } )
+  });
+
+});
+
+app.get("/favourites", (req, res) => {
+
+  findHearts(req.cookies.user_id, db)
+  .then((likes) => {
+    console.log(likes)
+    res.send(likes);
+  })
+  .catch(err => {
+    console.log("this is an error", err);
+    res.status(400).send("Stop")
   });
 
 });
