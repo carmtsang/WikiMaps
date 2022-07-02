@@ -12,7 +12,6 @@ const { getUser } = require('../user-helpers');
 
 
 module.exports = (db) => {
-
   // load user home page
   router.get('/', (req, res) => {
     const userID = req.cookies.user_id;
@@ -27,11 +26,7 @@ module.exports = (db) => {
         .status(500)
         .json({ error: err.message });
       });
-
-
   })
-
-
 
   return router;
 

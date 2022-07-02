@@ -1,7 +1,7 @@
 const express = require('express');
 const { database } = require('pg/lib/defaults');
 const router  = express.Router();
-const { getMarkers, getMarker, editMarker, deleteMarker } = require('../maps-helper');
+const { getMarkers, getMarker, editMarker, deleteMarker } = require('../map-helpers');
 const { addMarker } = require('../marker-helper');
 
 
