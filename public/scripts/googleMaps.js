@@ -13,6 +13,7 @@ function initMap() {
     map,
   });
   }
+  // lat & long swapped b/c Carmen can't tell them a part in the initial seeding of data
   const showPins = pins => {
     for (let pin of pins) {
       addPin({ lat: pin.longitude, lng: pin.latitude } )
@@ -20,13 +21,10 @@ function initMap() {
   }
 
   const renderCoords = $.ajax(`/api/all_markers/${mapId}`, { method: 'GET' })
-      .then(pins => showPins(pins))
+    .then(pins => showPins(pins))
+    .catch(error => console.log(error))
 
-
-  //  for (let coord of coords) {
-  //    addPin(coord)
-  //  }
-    renderCoords()
+  renderCoords()
 
   //a working pin here
   new google.maps.Marker({
@@ -34,7 +32,6 @@ function initMap() {
     map,
     title: "Hello World!",
   });
-
 
   // creates a marker when clicked
   google.maps.event.addListener(map, 'click', function(e) {
