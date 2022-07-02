@@ -25,11 +25,9 @@ module.exports = (db) => {
       const userID = req.cookies.user_id;
       const map = req.body;
       addMap(userID, map, db)
-
-      getNewestMap(db)
         .then((map) => {
           console.log(map)
-          res.redirect(`/maps/${map.id}`);
+          res.redirect('users');
         })
         .catch(err => {
           res
