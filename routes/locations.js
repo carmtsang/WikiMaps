@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { getMarkers, getMarker, addMarker, editMarker, deleteMarker } = require('../maps-helper');
+const { getMarkers, getMarker, addMarker, editMarker, deleteMarker } = require('../marker-helper');
 
 
 // this will go on individual map page
@@ -18,18 +18,11 @@ router.post('/', (req, res) => {
   const locations = req.body;
   console.log(locations);
 
-  // addMap(userID, map, db)
-  //       .then(res => res.rows)
-
 
   addMarker(userID, locations, db)
-    .then((res) => {
-      console.log("res and addmarker", res);
-    })
-    res.redirect("/");
+  res.redirect("users");
 })
 
 
 return router;
 };
-

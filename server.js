@@ -43,31 +43,21 @@ app.use(
 app.use(express.static("public"));
 
 // Separated Routes for each Resource
-// Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-// const widgetsRoutes = require("./routes/widgets");
 const apiRoutes = require("./routes/api")
 const mapsRoutes = require("./routes/maps");
 const locationsRoutes = require("./routes/locations");
 const newMapsRoutes = require("./routes/newMaps");
-const { getUser } = require("./user-helpers");
-const { selectAllMaps, findHearts } = require("./user-helpers");
+const { selectAllMaps } = require("./maps-helper");
+const { findHearts } = require("./user-helpers");
 
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-
-
-// app.use("/api/widgets", widgetsRoutes(db));
 app.use('/api', apiRoutes(db));
 app.use('/maps', mapsRoutes(db));
 app.use('/newMaps', newMapsRoutes(db));
 app.use('/locations', locationsRoutes(db));
 app.use('/users', usersRoutes(db));
-
-
-// app.use(commentsRoutes(db));
-// Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
@@ -91,15 +81,14 @@ app.get("/", (req, res) => {
 
 });
 
+//Index Page likes
 app.get("/favourites", (req, res) => {
 
   findHearts(req.cookies.user_id, db)
   .then((likes) => {
-    console.log(likes)
     res.send(likes);
   })
   .catch(err => {
-    console.log("this is an error", err);
     res.status(400).send("Stop")
   });
 
@@ -117,20 +106,10 @@ app.post("/logout", (req, res) => {
   res.clearCookie('user_id')
   res.redirect('/');
 })
-app.get("/logout", (req, res) => {
-  res.clearCookie('user_id')
-  res.redirect('/');
-})
-
-// // for markers
-// app.get("/maps", (req,res) => {
-//   res.render("/maps/1");
-// })
 
 app.post("/maps/:id", (req, res) => {
   console.log(req.body);
 } )
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

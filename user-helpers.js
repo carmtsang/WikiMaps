@@ -1,5 +1,3 @@
-const users = require("./routes/users");
-
 const getUser = (userID, db) => {
   const queryString = `SELECT * FROM users
   WHERE id = $1;`;
@@ -7,30 +5,6 @@ const getUser = (userID, db) => {
     .then(res => res.rows[0])
     .catch(err => console.log(err.message))
 }
-
-const getMapById = (map_id, db) => {
-  const queryString = `SELECT * FROM maps
-  WHERE id = $1;`;
-  return db.query(queryString, [map_id])
-    .then(res => res.rows[0])
-    .catch(err => console.log(err.message))
-}
-
-const selectAllMaps = db => {
-  const query = 'SELECT * FROM maps;'
-  return db.query(query)
-  .then(res =>  res.rows)
-  .catch(err => console.log(err.message));
-}
-
-const getUserMadeMaps = (userID, db) => {
-  const queryString = `SELECT * FROM maps WHERE owner_id = $1`;
-  return db
-    .query(queryString, [userID])
-    .then((res) => {
-      return res.rows})
-    .catch(err => console.log(err.message));
-};
 
 const getUserContributions = (userID, db) => {
   const queryString = `SELECT maps.*, locations.owner_id
@@ -74,11 +48,8 @@ const findHearts = (userID, db) => {
 
 module.exports = {
   getUser,
-  getUserMadeMaps,
   selectUserLikes,
   getUserContributions,
-  selectAllMaps,
-  getMapById,
   addMap,
   findHearts
 }

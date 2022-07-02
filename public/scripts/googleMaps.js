@@ -1,6 +1,3 @@
-// const { listen } = require("express/lib/application");
-
-let allMarkers = [];
 
 // initialzie map onto the page
 function initMap() {
@@ -9,40 +6,69 @@ function initMap() {
   let map = new google.maps.Map(document.getElementById("map"), {
     zoom: 10,
     center: metro,
-});
-
-// creates a marker when clicked
-google.maps.event.addListener(map, 'click', function(e) {
-  let location = e.latLng
-
-  let marker = new google.maps.Marker({
-    position: location,
-    map: map,
   });
 
-  let lat = marker.getPosition().lat()
-  let lng = marker.getPosition().lng()
+  const addPin = coord => {
+    new google.maps.Marker({
+    position: coord,
+    map,
+  });
+  }
+  const showPins = pins => {
+    for (let pin of pins) {
+      addPin({ lat: pin.longitude, lng: pin.latitude } )
+    }
+  }
 
-  markerPosition = {lat,lng};
-
-  //adds the lat and lng into the array
-  allMarkers.push(markerPosition);
-
-  console.log(allMarkers)
-
-  // content that is on the infowindow
-  let contentAdd = `title: ` + `description: ` + `lat: ${lat} + lng: ${lng}`;
+  const renderCoords = $.ajax(`/api/all_markers/${mapId}`, { method: 'GET' })
+      .then(pins => showPins(pins))
 
 
-  // adds the info window on the marker
-    google.maps.event.addListener(marker, 'click', function(e) {
-      let infoWindow = new google.maps.InfoWindow({
-        content: contentAdd
-      });
-      infoWindow.open(map, marker);
+  //  for (let coord of coords) {
+  //    addPin(coord)
+  //  }
+    renderCoords()
+
+  //a working pin here
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
   });
 
-});
+
+  // creates a marker when clicked
+  google.maps.event.addListener(map, 'click', function(e) {
+    let location = e.latLng
+
+    let marker = new google.maps.Marker({
+      position: location,
+      map: map,
+    });
+
+    let lat = marker.getPosition().lat()
+    let lng = marker.getPosition().lng()
+
+    markerPosition = {lat,lng};
+
+    //adds the lat and lng into the array
+    allMarkers.push(markerPosition);
+
+    console.log(allMarkers)
+
+    // content that is on the infowindow
+    let contentAdd = `title: ` + `description: ` + `lat: ${lat} + lng: ${lng}`;
+
+
+    // adds the info window on the marker
+      google.maps.event.addListener(marker, 'click', function(e) {
+        let infoWindow = new google.maps.InfoWindow({
+          content: contentAdd
+        });
+        infoWindow.open(map, marker);
+    });
+
+  });
 
 };
 

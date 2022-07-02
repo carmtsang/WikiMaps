@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const { addMap, getMapById } = require('../user-helpers');
+const { addMap, getMapById, deleteMap } = require('../maps-helper');
 
 
 module.exports = (db) => {
@@ -25,6 +25,13 @@ module.exports = (db) => {
         .then(() => {
           res.redirect('users');
         })
+    })
+
+    router.post("/:map_id/delete", (req, res) => {
+      const map_id = req.params.map_id;
+      deleteMap(map_id, db)
+
+      res.redirect('/users')
     })
 
   return router;
