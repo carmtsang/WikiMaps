@@ -1,16 +1,21 @@
+// const pathname = window.location.pathname.split('/')
 
-// let script = document.createElement('script');
-// script.src = 'http://localhost:8080/api/locations';
+// const mapId = pathname[2]
+const pins = $.get(`api/all_marks/${mapId}`);
+// const coords = [];
+let map = [];
 
-const coords = [
-  { lat: -24.578, lng: 155.044 },
-  { lat: -26.578, lng: 146.044 },
-  { lat: -25.578, lng: 166.044 }
-  ]
 
- function initMap() {
+
+// const coords = [ { lat: -123.115070506614, lng: 49.2556150056549},
+//   { lat: 49.2842565091818, lng: -123.109307760741},
+//   { lat: 49.281792317337, lng: -123.085403914797},
+//   { lat: 49.296807446507, lng: -123.135658403928}
+// ]
+
+function initMap() {
    const myLatLng = { lat: 49.244480043849, lng: -123.11219084459756 };
-   const map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById("map"), {
      zoom: 12,
      center: myLatLng,
    });
@@ -23,9 +28,12 @@ const coords = [
    });
    }
 
-   for (let coord of coords) {
-     addPin(coord)
-   }
+  getMarkers(db).then(markers => {
+    for (let marker of markers) {
+      let coord = { lat: marker.latitude, lng: marker.longitude }
+      addPin(coord)
+    }
+  })
 
    new google.maps.Marker({
      position: myLatLng,
@@ -35,6 +43,7 @@ const coords = [
 
 
  }
+
 window.initMap = initMap;
 // creates a marker when clicked
 // google.maps.event.addListener(map, 'click', function(e) {

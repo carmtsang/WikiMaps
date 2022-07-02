@@ -34,6 +34,11 @@ const loadUserMaps = () => {
     .catch(error => console.log(error));
 }
 
+const loadMarkers = () => {
+  $.ajax('/api/locations', { method: 'GET' })
+    .then(locations => )
+}
+
 // user contributed maps
 const renderContribute = userAdd => {
   for (const pin of userAdd) {
