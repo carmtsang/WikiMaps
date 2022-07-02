@@ -2,7 +2,7 @@
 
 $(() => {
 
-    // add user created maps
+  // add user created maps
   const renderUserMaps = userMaps => {
     for (const map of userMaps) {
       let $post = createUserMaps(map);
@@ -77,7 +77,18 @@ $(() => {
       .catch(error => console.log(error));
   }
 
+  const homePageLikes = () => {
+    $.ajax('/favourites', { method: 'GET' })
+      .then(userLikes => {
+        for (let like of userLikes) {
+          $(`p[data-maps-id='${like.map_id}']`).find('i').css({ color: "red" })
+        }
+      })
+      .catch(error => console.log(error));
+  }
+
   loadUserMaps();
   loadLikes();
   loadContributions();
+  homePageLikes();
 });
