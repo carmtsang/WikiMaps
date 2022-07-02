@@ -59,7 +59,10 @@
 
     <div class="all-maps">
       <% for (let map of maps) { %>
-      <p class="map-name"><%= map.name %></p>
+      <p class="map-name">
+        <a href="/maps/<%= map.id %>"><%= map.name %></a>
+      </p>
+
       <p class="map-description"><%= map.description %></p>
       <p class="likes" data-maps-id="<%= map.id %>">
         <i class="fa-solid fa-heart"></i>
