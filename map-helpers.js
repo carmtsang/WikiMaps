@@ -26,8 +26,15 @@ const addMap = (userID, map, db) => {
 const selectAllMaps = db => {
   const query = 'SELECT * FROM maps;'
   return db.query(query)
-  .then(res =>  res.rows)
-  .catch(err => console.log(err.message));
+    .then(res =>  res.rows)
+    .catch(err => console.log(err.message));
+}
+
+const getNewestMap = db => {
+  const queryString = `SELECT * FROM maps ORDER BY id DESC LIMIT 1`
+  return db.query(queryString)
+    .then(res =>  res.rows[0])
+    .catch(err => console.log(err.message));
 }
 
 const getUserMadeMaps = (userID, db) => {
@@ -51,5 +58,6 @@ module.exports = {
   addMap,
   selectAllMaps,
   getUserMadeMaps,
-  deleteMap
+  deleteMap,
+  getNewestMap
 }
