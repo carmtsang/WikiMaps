@@ -3,8 +3,8 @@ const router  = express.Router();
 const cookieParser = require('cookie-parser')
 
 const {  getUser, selectUserLikes, getUserContributions } = require('../user-helpers');
-const {  getMapById, addMap, selectAllMaps, getUserMadeMaps, getCoordsById } = require('../maps-helper');
-const { addMarker, getMarkers, getMarkersByMap, getMarkersById, getMarker } = require('../marker-helper');
+const { selectAllMaps, getUserMadeMaps, getCoordsById } = require('../maps-helper');
+const { getMarkers, getMarkersByMap, getMarker } = require('../marker-helper');
 
 module.exports = (db) => {
 
