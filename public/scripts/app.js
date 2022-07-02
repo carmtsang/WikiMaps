@@ -73,7 +73,7 @@ const addUserLikes = likes => {
     <a href="/maps/${likes.map_id}">${likes.name}</a>
     <p>${likes.description}</p>
   </div>
-  <form action="/likes/:delete" method="post">
+  <form action="/likes/delete" method="post">
     <button class="button" type="submit"> <i class="fa-solid fa-heart"></i></button>
   </form>
   </div>
