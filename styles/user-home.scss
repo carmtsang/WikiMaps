@@ -37,6 +37,7 @@ section {
 .section_head, .user_map_list {
   display: flex;
   justify-content: space-between;
+  min-width: 31rem;
 }
 
 .user_map_list{
@@ -72,6 +73,10 @@ i {
 
 .fa-heart {
   color: #D1495B;
+}
+
+.fa-heart:hover, .fa-trash-can:hover {
+  font-size: 30px;
 }
 
 #new-map-form {
