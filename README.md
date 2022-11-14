@@ -11,6 +11,20 @@ Midterm project for Lighthouse Labs. WikiMaps is a web app that allows users to 
 - SASS
 - PostgreSQL
 
+## Screen Shots:
+
+![Home](https://github.com/carmtsang/WikiMaps/blob/master/docs/user_homepage.jpg)
+WikiMaps Landing page.
+
+![User Page](https://github.com/carmtsang/WikiMaps/blob/master/docs/user_homepage.jpg)
+User home page, where users create a new map and see list of created maps, liked maps, and maps they contributed to.
+
+![User Page](https://github.com/carmtsang/WikiMaps/blob/master/docs/user_homepage2.jpg)
+User home page continued.
+
+![Map](https://github.com/carmtsang/WikiMaps/blob/master/docs/map.jpg)
+Map view.
+
 ## Getting Started
 
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
