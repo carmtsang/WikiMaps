@@ -1,22 +1,20 @@
 <nav>
-
   <div class="navbar">
     <div class="logo">
-      <a href="/"><img src="/images/wikimaps_logo.png"></a>
+      <a href="/"><img src="/images/wikimaps_logo.png" /></a>
     </div>
     <div class="nav-links">
-<% if (userID) { %>
-        <a href="/users">My Maps</a>
-        <form action="/logout" method="POST">
-          <button type="submit">log out</button>
-        </form>
-        <% } else { %>
-            <a href="/login/1">Login</a>
-            <a href="/register">Register</a>
-        <% } %>
+      <% if (userID) { %>
+
+      <a href="/users">My Maps</a>
+      <form action="/logout" method="POST">
+        <button type="submit">log out</button>
+      </form>
+
+      <% } else { %>
+      <a class="header-btn" href="/login/1">Login</a>
+      <a class="header-btn" href="/register">Register</a>
+      <% } %>
     </div>
   </div>
 </nav>
-
-
-

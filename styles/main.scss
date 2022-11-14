@@ -3,7 +3,7 @@ body {
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: rgb(236, 247, 249);
 }
 
@@ -18,10 +18,11 @@ body {
 #map {
   height: 600px;
   width: 800px;
-  margin: .5rem;
+  margin: 0.5rem;
 }
 
-h1, p {
+h1,
+p {
   color: #003d5b;
 }
 
@@ -39,12 +40,14 @@ h1, p {
 }
 
 .nav-links {
+  display: flex;
   padding-right: 1em;
   a {
-    color: #EDAE49;
+    color: #edae49;
     text-decoration: none;
+    padding-right: 1em;
     &:hover {
-      color:rgb(236, 247, 249)
+      color: rgb(236, 247, 249);
     }
   }
 }
