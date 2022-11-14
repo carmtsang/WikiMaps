@@ -2,7 +2,7 @@
 
 Midterm project for Lighthouse Labs. WikiMaps is a web app that allows users to collaboratively create maps which list multiple "points". For example: "Best Places to Eat Around Town" or "Locations of Movie Scenes".
 
-Tech Stack:
+## Tech Stack:
 
 - NodeJS
 - Express
