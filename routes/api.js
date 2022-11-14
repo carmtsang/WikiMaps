@@ -1,100 +1,82 @@
-const express = require('express');
-const router  = express.Router();
-const cookieParser = require('cookie-parser')
+const express = require("express");
+const router = express.Router();
 
-const { selectUserLikes, getUserContributions } = require('../user-helpers');
-const { selectAllMaps, getUserMadeMaps } = require('../map-helpers');
-const { getMarkers, getMarkersByMap, getMarker } = require('../marker-helper');
+const { selectUserLikes, getUserContributions } = require("../user-helpers");
+const { selectAllMaps, getUserMadeMaps } = require("../map-helpers");
+const { getMarkers, getMarkersByMap, getMarker } = require("../marker-helper");
 
 module.exports = (db) => {
-
-// list of maps liked by user
-  router.get('/user/likes', (req, res) => {
+  // list of maps liked by user
+  router.get("/user/likes", (req, res) => {
     const userID = req.cookies.user_id;
     selectUserLikes(userID, db)
-    .then(userLikes => res.json(userLikes))
-    .catch(err => {
-      res
-      .status(500)
-      .json({ error: err.message });
-    });
-  })
+      .then((userLikes) => res.json(userLikes))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
   // get all maps
-  router.get('/maps', (req, res) => {
+  router.get("/maps", (req, res) => {
     const userID = req.cookies.user_id;
     selectAllMaps(db)
-      .then(maps => res.json(maps))
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((maps) => res.json(maps))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
   // gets all the map information
-  router.get('/locations', (req, res) => {
+  router.get("/locations", (req, res) => {
     const userID = req.cookies.user_id;
     getMarkers(db)
-      .then(maps => res.json(maps))
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((maps) => res.json(maps))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
-
-
   // get all markers
-  router.get('/all_markers/:map_id', (req, res) => {
-    const mapID = req.params.map_id
+  router.get("/all_markers/:map_id", (req, res) => {
+    const mapID = req.params.map_id;
     getMarkersByMap(mapID, db)
-      .then(pins => res.json(pins))
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-    });
-  })
+      .then((pins) => res.json(pins))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
-// gets a specific point from a specific map
-  router.get('/all_markers/:map_id/:id', (req, res) => {
-    const mapID = req.params.map_id
+  // gets a specific point from a specific map
+  router.get("/all_markers/:map_id/:id", (req, res) => {
+    const mapID = req.params.map_id;
     const id = req.params.id;
     getMarker(mapID, id, db)
-      .then(pins => res.json(pins))
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-    });
-  })
+      .then((pins) => res.json(pins))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 
   // maps created by the user
-  router.get('/user/maps', (req, res) => {
+  router.get("/user/maps", (req, res) => {
     const userID = req.cookies.user_id;
 
     getUserMadeMaps(userID, db)
-      .then(userMaps => res.json(userMaps))
-      .catch(err => {
-        res
-        .status(500)
-        .json({ error: err.message });
-    });
+      .then((userMaps) => res.json(userMaps))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
   //api for maps user contributed to
-  router.get('/user/add', (req, res) => {
+  router.get("/user/add", (req, res) => {
     const userID = req.cookies.user_id;
     getUserContributions(userID, db)
-    .then(userAdd => res.json(userAdd))
-    .catch(err => {
-      res
-      .status(500)
-      .json({ error: err.message });
-    });
+      .then((userAdd) => res.json(userAdd))
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
   });
 
-  return router
-}
+  return router;
+};

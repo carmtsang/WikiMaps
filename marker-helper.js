@@ -1,8 +1,7 @@
-
 const addMarker = (userID, locations, db) => {
   const queryString = `INSERT INTO locations (owner_id, map_id, longitude, latitude, name, description, url)
    VALUES ($1, $2, $3, $4, $5, $6, $7)
-  RETURNING *;`
+  RETURNING *;`;
 
   const values = [
     userID,
@@ -11,47 +10,44 @@ const addMarker = (userID, locations, db) => {
     locations.latitude,
     locations.name,
     locations.description,
-    locations.url
-  ]
+    locations.url,
+  ];
 
-  return db.query(queryString, values)
-    .then(res => {
-      console.log(res.rows[0]);
-      return res.rows[0];
-    });
-}
-
+  return db.query(queryString, values).then((res) => {
+    console.log(res.rows[0]);
+    return res.rows[0];
+  });
+};
 
 const getMarkersByMap = (map_id, db) => {
-  return db.query(`SELECT * FROM locations WHERE map_id = $1`, [map_id])
-    .then(res => res.rows)
+  return db
+    .query(`SELECT * FROM locations WHERE map_id = $1`, [map_id])
+    .then((res) => res.rows)
     .catch((err) => console.error(err.stack));
-}
+};
 
 const getMarker = (id, map_id, db) => {
-  const queryString = `SELECT * FROM locations WHERE map_id = $1 AND locations.id = $2`
-  return db.query(queryString, [map_id, id])
+  const queryString = `SELECT * FROM locations WHERE map_id = $1 AND locations.id = $2`;
+  return db
+    .query(queryString, [map_id, id])
     .then((res) => res.rows)
     .catch((err) => console.err(err.stack));
-}
+};
 
 const getMarkers = (db) => {
-  return db.query(`SELECT * FROM locations`)
-    .then((res) => {
-      console.log("+++++", res.rows)
-      return res.rows;
-    });
-}
-
+  return db.query(`SELECT * FROM locations`).then((res) => {
+    console.log("+++++", res.rows);
+    return res.rows;
+  });
+};
 
 const deleteMarker = (mapID, locationsID) => {
   const queryString = `DELETE FROM locations WHERE map_id = $1 AND id = $2`;
 
-  return db.query(queryString, [mapID, locationsID])
-    .then(res => {
-      (res.rows[0]);
-    });
-}
+  return db.query(queryString, [mapID, locationsID]).then((res) => {
+    res.rows[0];
+  });
+};
 
 const editMarker = (marker) => {
   const queryString = ` UPDATE locations SET longitude = $1,
@@ -70,14 +66,13 @@ const editMarker = (marker) => {
     locations.description,
     locations.owner_id,
     locations.map_id,
-    locations.url
-  ]
+    locations.url,
+  ];
 
-  return db.query(queryString, values)
-  .then(res => {
-    (res.rows[0]);
+  return db.query(queryString, values).then((res) => {
+    res.rows[0];
   });
-}
+};
 
 module.exports = {
   getMarkersByMap,
@@ -85,5 +80,5 @@ module.exports = {
   addMarker,
   editMarker,
   deleteMarker,
-  getMarkers
-}
+  getMarkers,
+};
