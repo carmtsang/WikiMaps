@@ -13,7 +13,7 @@ Midterm project for Lighthouse Labs. WikiMaps is a web app that allows users to 
 
 ## Screen Shots:
 
-![Home](https://github.com/carmtsang/WikiMaps/blob/master/docs/user_homepage.jpg)
+![Home](https://github.com/carmtsang/WikiMaps/blob/master/docs/landing_page.jpg)
 WikiMaps Landing page.
 
 ![User Page](https://github.com/carmtsang/WikiMaps/blob/master/docs/user_homepage.jpg)
